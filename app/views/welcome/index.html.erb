@@ -1,0 +1,30 @@
+<style>
+#canvas {height:500;z-index:5000; width:200;margin-top:-60px;position:absolute;};
+</style>
+<script>
+$(function() {
+  var cats= ['clothes','accesories','pets'];
+  var svg = d3.select("#canvas").append("svg:svg")
+                            .attr("width", 200)
+                            .attr("height", 320);
+			    
+   var rects = svg.selectAll("rects").data(cats).enter().append("rect");
+
+   rects.attr("x", 55)
+         .attr("y", function(i,d){ return d * 12})
+	 .attr("class", "rect")
+         .attr("width", 145)
+         .attr("height", 10)
+         .style("fill", "#2255aa");
+
+   var rectTrans = d3.selectAll("rect").transition()
+   .duration(750)
+   .attr("y", function(d) {
+      return (parseInt(d3.select(this).attr("y")) * 10) + 50; 
+   });
+
+});
+</script>
+<div id="main" class="container">
+<div id="canvas"> </div>
+</div>
