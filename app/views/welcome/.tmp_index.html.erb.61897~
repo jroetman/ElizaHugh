@@ -1,0 +1,39 @@
+      <div class="container text-center">
+	<div class="row">
+	  <div class="col-md-4" ng-controller="SpecialsCtrl">
+	    <div class="row logo">
+	      <%= image_tag("ehLogo.png") %> 
+	    </div>
+
+	    <div class="specials row" ng-repeat="special in specials">
+	      <div class="col-md-9 col-md-offset-1">
+		<div class="alert alert-{{special.color}}">
+		  <h4> {{special.title}}</h4>
+		  <p> {{special.description}}</p>
+		</div>
+	      </div>
+	    </div>
+
+	  </div>
+
+	  <div class="col-md-8">
+	    <div id="myCarousel" class="carousel slide">
+	      <ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+	      </ol>
+	      <!-- Carousel items -->
+	      <div class="carousel-inner">
+		<div class="active item"><%= image_tag("bag.jpg", size:"750x500", class:"img-rounded") %></div>
+		<div class="item"><%= image_tag("sweater1.jpg", size:"750x500", class:"img-rounded") %></div>
+		<div class="item"><%= image_tag("rug1.jpg", size:"750x500", class:"img-rounded") %></div>
+		<div class="item"><%= image_tag("clothtowels.jpg", size:"750x500", class:"img-rounded") %></div>
+	      </div>
+	      <!-- Carousel nav -->
+	      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+	      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+	    </div>
+	  </div>
+	</div>
+      </div>

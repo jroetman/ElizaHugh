@@ -1,18 +1,6 @@
-<h1>Listing Images</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-  </tr>
-
-  <% @products.each do |product| %>
-    <tr>
-      <td>
-        <%= image_tag product.avatar.url %>
-        <%= image_tag product.avatar.url(:medium) %>
-        <%= image_tag product.avatar.url(:thumb) %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<div class="col-sm-2">
+   <%= render 'filter' %>	
+</div>
+<div class="col-sm-10">
+  <%= render 'images' %>
+</div>

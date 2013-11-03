@@ -45,4 +45,4 @@ end
 # gem 'debugger', group: [:development, :test]
 #
 gem 'd3js-rails'
-gem 'paperclip', "~> 3.0"
+gem 'paperclip', "~> 3.5"
