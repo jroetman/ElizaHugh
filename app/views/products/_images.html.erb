@@ -1,6 +1,5 @@
  
  <% @products.each do |product| %>
- 
      <div class="col-sm-4">
      	 <ul class="list-unstyled">
          <li> <%= image_tag product.image.url(:medium), :size => "250x200" %> </li>
@@ -10,6 +9,5 @@
 		 <li class='price'> $<%= product.price %> </li>  
 	    </ul>
 	</div>
-
   <% end %>
   

@@ -16,5 +16,6 @@
 //= require bootstrap
 //= require d3
 //= require angular.min
-//= require controllers
 //= require_tree .
+
+

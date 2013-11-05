@@ -1,8 +1,12 @@
-<ul class="list-group">
-  <% @categories.each do |c| %>
+<ul id="catfilter" class="list-group">
+  <li class="list-group-item"><strong>Select Categories</strong></li>
+  <li class="list-group-item">Select All
+    <input id="catSelectAll" class='pull-right' value='selectAll'  type="checkbox" value="" <%= @cat.blank? ?  "checked=checked" : ""  %>>
+  </li>
+  <% categories.each do |c| %>
   <li class="list-group-item">
      <%= c.name %>
-	 <input class='pull-right' value='<%= c.id %>' type="checkbox" value="">
+	 <input class='catfilter pull-right' value='<%= c.id %>'  type="checkbox" value="" <%= (@cat.to_i == c.id)? "checked=checked" : "" %>>
   </li>
   <% end %>
 </ul>

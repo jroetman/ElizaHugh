@@ -1,5 +1,7 @@
 ElizaHugh::Application.routes.draw do
   get "products/index"
+  get "products/partIdx"
+  get "specials/index"
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -15,6 +17,7 @@ ElizaHugh::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :products
+  resources :specials
 
   # Example resource route with options:
   #   resources :products do

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @special.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @special.description %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @special.color %>
+</p>
+
+<p>
+  <strong>Border:</strong>
+  <%= @special.border %>
+</p>
+
+<%= link_to 'Edit', edit_special_path(@special) %> |
+<%= link_to 'Back', specials_path %>

@@ -1,18 +1,21 @@
-      <div class="container text-center">
+
+    <div class="container text-center">
 	<div class="row">
 	  <div class="col-md-4" ng-controller="SpecialsCtrl">
 	    <div class="row logo">
 	      <%= image_tag("ehLogo.png") %> 
 	    </div>
 
-	    <div class="specials row" ng-repeat="special in specials">
+         <% @specials.each do |product| %>
+	    <div class="specials row">
 	      <div class="col-md-9 col-md-offset-1">
-		<div class="alert alert-{{special.color}}">
-		  <h4> {{special.title}}</h4>
-		  <p> {{special.description}}</p>
-		</div>
+		    <div class="alert alert-<%= product.color %>">
+		      <h4><%= product.title %></h4>
+		      <p> <%= product.description %></p>
+		    </div>
 	      </div>
 	    </div>
+		<% end %>
 
 	  </div>
 

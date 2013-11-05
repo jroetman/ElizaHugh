@@ -22,15 +22,16 @@
 
   <body>
     <div class="main container">
+    		     <a href="/">
       <div class="row head ">   
-      </div>
+
+      </div></a>
       <div class="row">   
 	<nav class="headnav navbar navbar-default" role="navigation">
 	<ul class="nav navbar-nav">
-	  <li><a href="#">Clothes</a></li>
-	  <li><a href="#">Accessories</a></li>
-	  <li><a href="#">Household</a></li>
-	  <li><a href="#">Kitchen</a></li>
+	 <% categories.each do |c| %>
+	  <li><a href="/products?&cat=<%= c.id %>"><%= c.name %></a></li>
+	 <% end %>
 	</ul>
 	<ul class="nav navbar-nav navbar-right">
 	  <li><a href="#">Login</a></li>

@@ -1,8 +1,17 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
-    @categories = Category.all
-  end
+    
+    @cat = params[:cat]
+    @products =  @cat.blank? ? Product.all : Product.where(category_id: @cat) 
+ end
+ 
+ def partIdx
+    @cats = params[:cats]
+    @products = @cats.blank? ? Product.all : Product.where(category_id: @cats)
+    
+    render :partial => "images", :layout => false, :locals =>{:products =>@products}
+ 
+   end
 
 def show
   @product = Product.find(params[:id])
