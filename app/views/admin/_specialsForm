@@ -1,0 +1,25 @@
+ <%= form_for special , :remote => true,  :html => {:id => "specialsSave"} do |f| %>
+      <div class='form-inline'>
+	  <div class="form-group">
+	    <label class="sr-only" for="title">Title</label>
+	     <%= f.text_field :title, :class => 'form-control' %>
+	  </div>
+	    <div class="form-group">
+	    <label class="sr-only" for="color">Color</label>
+	     <%= f.text_field :color, :class => 'form-control' %>
+	  </div>
+	  <div class="form-group">
+	    <label class="sr-only" for="border">Border</label>
+	    <%= f.text_field :border,  :class => 'form-control'  %>
+	  </div>
+	   <div class="form-group">
+	    <label class="sr-only" for="description">Description</label>
+	    <%= f.text_area :description,  :class => 'form-control'  %>
+	  </div>
+	  <div class="form-group">
+	      <%= f.submit "Save", :class => 'btn btn-primary' %>  <span class="saveStatus"></span>	<br/><br/>
+	      <%= link_to 'Remove', special, method: :delete, :remote => true, :class => 'remove btn btn-xs btn-danger', data: { confirm: 'Remove Special?' } %>
+	    
+	  </div>
+	 </div>	
+<% end %>

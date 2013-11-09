@@ -21,6 +21,11 @@ end
   @categories = Category.all
 end
  
+def destroy
+    #@product.destroy
+    render text: "Removed"
+end
+
 def create
   @product = Product.new(params[:product].permit(:image, :title, :description, :price))
   
@@ -28,7 +33,7 @@ def create
   if cat.blank? 
      cat = Category.new(:name => params[:product][:category])
      cat.save()
- end
+  end
  
  @product.category_id = cat.id
   

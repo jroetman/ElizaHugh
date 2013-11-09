@@ -15,6 +15,8 @@ class SpecialsController < ApplicationController
   # GET /specials/new
   def new
     @special = Special.new
+    render :partial => "admin/specialsForm", :layout => false, :locals =>{:special =>@special}
+ 
   end
 
   # GET /specials/1/edit
@@ -40,25 +42,18 @@ class SpecialsController < ApplicationController
   # PATCH/PUT /specials/1
   # PATCH/PUT /specials/1.json
   def update
-    respond_to do |format|
       if @special.update(special_params)
-        format.html { redirect_to @special, notice: 'Special was successfully updated.' }
-        format.json { head :no_content }
+         render text: "Saved Successfuly"
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @special.errors, status: :unprocessable_entity }
+         render text: "Failed to Save"
       end
-    end
   end
 
   # DELETE /specials/1
   # DELETE /specials/1.json
   def destroy
     @special.destroy
-    respond_to do |format|
-      format.html { redirect_to specials_url }
-      format.json { head :no_content }
-    end
+    render text: "Removed"
   end
 
   private

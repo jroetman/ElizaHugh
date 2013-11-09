@@ -1,0 +1,44 @@
+<div class="row">
+
+ <div class="col-sm-2">
+	Create a New Product
+	<%= form_for(@product, :remote=> true, :html => { :multipart => true }) do |form| %>
+	 <p>
+	  <%= form.label :title %><br/>
+	  <%= form.text_field :title %>
+	  </p>
+	  <p>
+	  <%= form.label :description %> <br/>
+	  <%= form.text_area :description %>
+	  </p>
+	  <p>
+	  <%= form.label :category %> <br/>
+	  <%= form.text_field :category  %>
+	  </p>
+	  <p>
+	  <%= form.label :price %> <br/>
+	  <%= form.text_field :price %>
+	  </p>
+	  <p>
+	  <%= form.label "Select Image"	 %> <br/>
+	  <%= form.file_field :image %>
+	  </p>
+	  <%= form.submit %>
+	<% end %>
+  </div>
+  
+   <div class="col-sm-10"> 
+   	<% @products.each do |product| %>
+     <div class="col-sm-2">
+     	 <ul class="list-unstyled">
+         <li> <%= image_tag product.image.url(:small), :size => "150x100" %> </li>
+	     <li><%= product.title %> </li>
+	     <li>  <%= product.description %> </li>
+		  <li>  <%= product.category.blank? ? " " : product.category.name %> </li>
+		 <li class='price'> $<%= product.price %> </li>  
+		 <li> <%= link_to 'Destroy', product, method: :delete, :remote => true, :class => 'remove', data: { confirm: 'Are you sure?' } %> </li>
+	    </ul>
+	</div>
+  <% end %>
+ </div>"
+</div>

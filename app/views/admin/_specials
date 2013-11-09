@@ -1,0 +1,26 @@
+
+<table id="specialsTable" class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+   
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @specials.each do |special| %>
+      <tr>      
+          <td>
+           <%= render partial: 'specialsForm', locals: {special: special} %>
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "Create Special", {:controller => "specials", :action => "new", :remote => true}, :class => "newSpecial btn btn-primary" %>
+
+
+ 

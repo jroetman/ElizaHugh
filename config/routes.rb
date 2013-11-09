@@ -1,4 +1,8 @@
 ElizaHugh::Application.routes.draw do
+  get "admin/index"
+  get "admin/specials"
+  get "admin/products"
+  get 'admin', to: 'admin#index'
   get "products/index"
   get "products/partIdx"
   get "specials/index"
@@ -18,6 +22,7 @@ ElizaHugh::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :products
   resources :specials
+  resources :users
 
   # Example resource route with options:
   #   resources :products do
