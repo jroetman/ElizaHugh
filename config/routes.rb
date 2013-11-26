@@ -5,8 +5,18 @@ ElizaHugh::Application.routes.draw do
   get 'admin', to: 'admin#index'
   get "products/index"
   get "products/partIdx"
+    get "products/show"
   get "specials/index"
   get "welcome/index"
+  
+  #authentication
+  post "authentication/login"
+  get "authentication/logout"
+  get "signed_out" => "authentication#signed_out"
+  get "change_password" => "authentication#change_password" 
+  get "forgot_password" => "authentication#forgot_password"
+  get "password_sent" => "authentication#password_sent"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

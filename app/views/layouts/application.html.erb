@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="storeFront"><head>
+<html lang="en"><head>
     <meta charset="utf-8">
     <title>Template · Bootstrap</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -22,70 +22,12 @@
 
   <body>
     <div class="main container">
-    		     <a href="/">
-      <div class="row head ">   
-
-      </div></a>
-      <div class="row">   
-	<nav class="headnav navbar navbar-default" role="navigation">
-	<ul class="nav navbar-nav">
-	 <% categories.each do |c| %>
-	  <li><a href="/products?&cat=<%= c.id %>"><%= c.name %></a></li>
-	 <% end %>
-	</ul>
-	<ul class="nav navbar-nav navbar-right">
-	  <li><a href="#">Login</a></li>
-	  <li><a href="#">Shopping Cart</a></li>
-	</ul>
-	</nav>
-      </div>
-
-      <%= yield %>      
-
-      <div class="row">
-	<div class="col-md-4">
-	  &nbsp	
-	</div>
-      </div>
-      <div class="row">
-	      
-        <div class="container"> 
-  	  <div class="foot well row">
-  	    <div class='fl'>
-  
-  	      <div class="col-sm-1"></div>
-  	      <div class="col-sm-3">
-  	        <ul class="list-unstyled">
-  	  	<li><h5> Products </h5></li>
-  	  	<li><a href="#"> Clothes </a></li>
-  	  	<li><a href="#"> Accessories </a></li>
-  	        </ul>
-  	      </div>
-  	      <div class="col-sm-3">
-  	        <ul class="list-unstyled">
-  	  	<li><h5> Friends </h5></li>
-  	  	<li><a href="#"> About Us</a></li>
-  	  	<li><a href="#"> Community </a></li>
-  	        </ul>
-  	      </div>
-  	      <div class="col-sm-3">
-  	        <ul class="list-unstyled">
-  	  	<li><h5> Contact Us </h5></li>
-  	  	<li> (123) 456-7890
-  	  	<a href="mailto:#">elizaHugh@example.com</a>
-  	  	</li>
-  	        </ul>
-  	      </div>
-  	      <div class="col-sm-2">
-  	        <ul class="list-inline pull-right">
-  	  	<li>Follow Us!</li>
-  	  	<li><a href="#"> <i class="icon-large icon-facebook-sign"></i> </a></li>
-  	  	<li><a href="#"> <i class="icon-large icon-twitter-sign"></i> </a></li>
-  	        </ul>
-  	      </div>
-  	    </div>
-  	  </div>
-       </div>
+      <%= render partial: 'layouts/header' %>
+	  <div id="content" class="container">
+        <%= yield %>      
+	  </div>
+      <%= render partial: 'layouts/footer' %>
+	 </div>
   </body>
 </html>
 

@@ -3,13 +3,13 @@
 	<div class="row">
 	  <div class="col-md-4" ng-controller="SpecialsCtrl">
 	    <div class="row logo">
-	      <%= image_tag("ehLogo.png") %> 
+	    
 	    </div>
 
          <% @specials.each do |product| %>
 	    <div class="specials row">
 	      <div class="col-md-9 col-md-offset-1">
-		    <div class="alert alert-<%= product.color %>">
+		    <div class="alert" <%= product.getStyle %>>
 		      <h4><%= product.title %></h4>
 		      <p> <%= product.description %></p>
 		    </div>
