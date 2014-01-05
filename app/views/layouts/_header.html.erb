@@ -1,42 +1,18 @@
-
+  
+ 
   <a href="/"><div class="row head"> <%= image_tag("ehLogo.png", :size => "270x90") %> </div></a>
   <div class="row">
-  <div class="headrow col-sm-6">
+  <div class="headrow col-sm-12">
     <nav class="headnav navbar navbar-default" role="navigation">
       <ul class="nav navbar-nav">
       <% categories.each do |c| %>
         <li><a href="/products?&cat=<%= c.id %>"><%= c.name %></a></li>
       <% end %>
       </ul>
+       <% if :current_user %>
+       <li class='pull-right nav navbar-nav'><a href="authentication/logout"> </a> </li>
+       <% end %>
     </nav>
   </div>
-  <div class="headrow col-md-6"> 
-    <nav class="headnav navbar navbar-default pull-right">
-	    <ul class="nav navbar-nav">
-	    <% if current_user %>
-	      <li><p><small class="text-danger">Logged in as: <strong> <%= current_user.username %> </strong></small></p></li>
-		  <li><a href="authentication/logout"  id="logout" class="btn btn-link btn-xs">Logout</a></li>
-		  <% if current_user.username == 'admin' %>
-		  <li><%= link_to "Admin Page", "/admin" %></li> 
-		  <% end %>
-	    <% else %>
-	    <li class="">
-	      <%= form_for User.new , url: authentication_login_path, :html => {:class=>'form-inline', :role => 'form'} do |f| %>
-	       <div class="form-group">
-	         <%= f.text_field :username, :class => 'form-control input-sm' %>
-		   </div>
-		   <div class="form-group">
-		     <%= f.password_field :password,  :class => 'form-control input-sm' %>
-		   </div>
-		   <div class="form-group">
-		     <%= f.submit 'Login',  :class => 'btn btn-primary btn-sm' %>
-		   </div>
-		   
-		  <% end %>
-		 </li>
-		 <li><a id="register" class="btn btn-info btn-xs" role='button'>Register</a></li>
-	    <% end %>
-	    </ul>
-		</nav>
-    </div>
+  
   </div>

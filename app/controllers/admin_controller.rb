@@ -1,6 +1,12 @@
 class AdminController < ApplicationController
   def index
-    
+     current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
+     
+     if current_user.nil?
+         @user = User.new
+         render :partial => "/users/login", :layout => false
+     end
+     
   end
   
   def specials

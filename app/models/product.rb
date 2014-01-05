@@ -10,6 +10,8 @@ class Product < ActiveRecord::Base
                       :large => "750x500>"
                       
                     }
+                    
+   validates_presence_of :title, :description, :price, :image
                    
 
 end

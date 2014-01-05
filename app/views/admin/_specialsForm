@@ -1,8 +1,15 @@
- <%= javascript_include_tag "jscolor/jscolor" %>
+
  <script type="text/javascript">
-   var myPicker = new jscolor.color(document.getElementById('myField1'), {})
-   myPicker.fromString('99FF33')  // now you can access API via 'myPicker' variable
+ //  var myPicker = new jscolor.color(document.getElementById('myField1'), {})
+   $(function() {
+   $(".colorpick").each(function(idx){
+       jscolor.color($(this).attr("id"), {})
+   });
+   });
+  
+  // myPicker.fromString('99FF33')  // now you can access API via 'myPicker' variable
  </script>
+
  <%= form_for special , :remote => true,  :html => {:id => "specialsSave"} do |f| %>
       <div class='form-inline'>
 	  <div class="form-group">
@@ -11,11 +18,7 @@
 	  </div>
 	    <div class="form-group">
 	    <label class="sr-only color" for="color">Color</label>
-	     <%= f.text_field :color, :class => 'form-control' , :id => 'myField1' %>
-	  </div>
-	  <div class="form-group">
-	    <label class="sr-only" for="border">Border</label>
-	    <%= f.text_field :border,  :class => 'form-control'  %>
+	     <%= f.text_field :color, :class => 'colorpick form-control', :id => special.id %>
 	  </div>
 	   <div class="form-group">
 	    <label class="sr-only" for="description">Description</label>

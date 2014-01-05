@@ -11,19 +11,21 @@ class ProductsController < ApplicationController
     
     render :partial => "images", :layout => false, :locals =>{:products =>@products}
  
-   end
+ end
 
 def show
   @product = Product.find(params[:id])
 end
-  def new
+
+def new
   @product = Product.new
   @categories = Category.all
 end
  
 def destroy
-    #@product.destroy
-    render text: "Removed"
+    Product.delete(params[:id]);
+    redirect_to :back
+    
 end
 
 def create
@@ -35,13 +37,16 @@ def create
      cat.save()
   end
  
- @product.category_id = cat.id
+  @product.category_id = cat.id
   
   if @product.save
-    redirect_to @product
+    redirect_to :back
+    @activeTab = 'products'
   else
-    render 'new'
+    flash[:notice] = 'product created'
+    redirect_to @product
   end
+  
 end
 
 end

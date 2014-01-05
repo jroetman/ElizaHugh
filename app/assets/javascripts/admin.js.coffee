@@ -8,6 +8,8 @@ $ ->
       $("#adminContent").html(data)), 'html')
 
   )
+  
+  $('#adminTabs a:first').tab('show'); 
     
   $("#content").on("ajax:complete", ".remove", ->
     alert("success"))

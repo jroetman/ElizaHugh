@@ -19,15 +19,12 @@ class User < ActiveRecord::Base
 
   def self.authenticate_by_username(username, password)
     user =  User.where(username: username).take
-  
-    return user
-    #if passhash == password.to_s
-    #  print "TRUE!!!!"
-    #  user
-    #else
-    #  print "FALSE!!"
-    #  nil
-    #end
+
+    if BCrypt::Password.new(user.password).is_password? password
+      user
+    else
+      nil
+    end
   end
 
   def encrypt_password

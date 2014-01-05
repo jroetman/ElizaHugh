@@ -9,7 +9,7 @@ class AuthenticationController < ApplicationController
     password = params[:user][:password]
     
     if username_or_email.rindex('@')
-      email=username_or_email
+      email= username_or_email
       user = User.authenticate_by_email(email, password)
       
     else
@@ -20,13 +20,13 @@ class AuthenticationController < ApplicationController
 
     if user
       session[:user_id] = user.id
-     
-    else
+      redirect_to admin_path
       
+    else
+      redirect_to root_url 
       
     end
-    
-     redirect_to root_url 
+
  end
  
  def logout

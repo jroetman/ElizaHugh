@@ -1,6 +1,6 @@
 #content {min-height:400px;}
 .tnav .navbar .container .navbar-default { height: 28px; }
-.head {text-align:center;padding-top:0px;height:90px;background:url("/assets/foxpumpkin.png");background-size:100% 800px; background-position:0% 66%;}
+.head {text-align:center;padding-top:0px;height:120px;background:url("/assets/foxpumpkin.png");background-size:100% 800px; background-position:0% 56%;}
 .headnav {height:30px;min-height:30px;background:white;}
 .headnav li a {padding:2px 10px;}
 .headrow {padding-left:0px; padding-right:0px;}
@@ -23,4 +23,5 @@ body {padding-top:0px;}
 }
 .fl {height:100px;background:white;opacity:0.8;}
 .logo {margin-left:-30px;}
-#myCarousel {margin-top:25px;}
+#myCarousel {margin-top:0px;margin-bottom:10px;width:750px;height:500px;}
+#myCarousel .carousel-inner > .item > img {height:500px;}

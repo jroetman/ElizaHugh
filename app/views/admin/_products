@@ -31,14 +31,26 @@
    	<% @products.each do |product| %>
      <div class="col-sm-2">
      	 <ul class="list-unstyled">
-         <li> <%= image_tag product.image.url(:small), :size => "150x100" %> </li>
-	     <li><%= product.title %> </li>
+         <li>  <%= image_tag product.image.url(:small), :size => "150x100" %> </li>
+	     <li>  <%= product.title %> </li>
 	     <li>  <%= product.description %> </li>
-		  <li>  <%= product.category.blank? ? " " : product.category.name %> </li>
+		 <li>  <%= product.category.blank? ? " " : product.category.name %> </li>
 		 <li class='price'> $<%= product.price %> </li>  
-		 <li> <%= link_to 'Destroy', product, method: :delete, :remote => true, :class => 'remove', data: { confirm: 'Are you sure?' } %> </li>
+		 <li> <%= link_to 'Destroy', product, method: :delete, :class => 'remove', data: { confirm: 'Are you sure?' } %> </li>
 	    </ul>
 	</div>
   <% end %>
- </div>"
+ </div>
+ 
+ <% if @product.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this post from being saved:</h2>
+ 
+    <ul>
+    <% @product.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 </div>

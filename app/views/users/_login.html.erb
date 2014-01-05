@@ -1,0 +1,11 @@
+<div class="container">
+     <div class="well">
+     <%= form_for @user, :url => authentication_login_path, :html => { :multipart => false } do |form| %>
+        <h2 class="form-signin-heading">Admin Login</h2>
+        <%= form.text_field :username %>
+        <%= form.password_field :password %>
+        <button class="btn btn-sm btn-primary col-sm-3" type="submit" >Login</button>
+	 <% end %>
+	 </div>
+
+</div>

@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require d3
 //= require angular.min
+//= require jscolor/jscolor
 //= require_tree .
 
 
