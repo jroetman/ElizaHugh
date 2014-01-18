@@ -1,4 +1,11 @@
-  
+  <%= csrf_meta_tag %> 
+  <script>
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+  </script>
  
   <a href="/"><div class="row head"> <%= image_tag("ehLogo.png", :size => "270x90") %> </div></a>
   <div class="row">
