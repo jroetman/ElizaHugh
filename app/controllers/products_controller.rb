@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
-  def index
-    
+ skip_before_action :require_login, only: [:show, :index]
+  
+ def index   
     @cat = params[:cat]
     @products =  @cat.blank? ? Product.all : Product.where(category_id: @cat) 
  end
@@ -10,7 +11,6 @@ class ProductsController < ApplicationController
     @products = @cats.blank? ? Product.all : Product.where(category_id: @cats)
     
     render :partial => "images", :layout => false, :locals =>{:products =>@products}
- 
  end
 
 def show
@@ -26,6 +26,17 @@ def destroy
     Product.delete(params[:id]);
     redirect_to :back
     
+end
+
+def createRemote
+   @product = Product.new(params[:product].permit(:image, :title, :description, :price))
+   @product.category_id = params[:product][:category];
+   
+   if @product.save
+       render inline: "<%= link_to 'Create New Product', :controller=> 'admin', :action => 'addProductRemote' %>"
+   else
+      redirect_to "/admin/addProductRemote", :flash => { :error => "There was a problem. Contact Jonathan if this persists." }
+   end
 end
 
 def create
@@ -46,7 +57,11 @@ def create
     flash[:notice] = 'product created'
     redirect_to @product
   end
-  
+end
+
+def require_login
+
+
 end
 
 end

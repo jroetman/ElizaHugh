@@ -21,4 +21,22 @@ class AdminController < ApplicationController
     render :partial => "products", :layout => false, :locals => {:products => @products}
     
   end
+  
+  def addProductRemote
+  
+    current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
+     
+    if current_user.nil?
+        @user = User.new
+        render :partial => "/users/login", :layout => false
+        
+    else
+	    @product = Product.new
+	    @cateogires = Category.all
+	    
+	    render :layout => false 
+	end
+    
+  end
+  
 end

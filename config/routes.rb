@@ -3,11 +3,14 @@ ElizaHugh::Application.routes.draw do
   get "admin/specials"
   get "admin/products"
   get 'admin', to: 'admin#index'
+  get "admin/addProductRemote"
   get "products/index"
   get "products/partIdx"
   get "products/show"
   get "specials/index"
   get "welcome/index"
+  
+  post "products/createRemote"
   
   #authentication
   post "authentication/login"

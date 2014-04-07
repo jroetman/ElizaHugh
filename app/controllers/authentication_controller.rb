@@ -23,7 +23,7 @@ class AuthenticationController < ApplicationController
       redirect_to admin_path
       
     else
-      redirect_to root_url 
+      redirect_to :back, :flash => {:error => "Username or Password was wrong."}
       
     end
 

@@ -9,9 +9,9 @@
  
   <a href="/"><div class="row head"> <%= image_tag("ehLogo.png", :size => "270x90") %> </div></a>
   <div class="row">
-  <div class="headrow col-sm-12">
+  <div class="headrow col-xs-12">
     <nav class="headnav navbar navbar-default" role="navigation">
-      <ul class="nav navbar-nav">
+      <ul class="list-inline navbar">
       <% categories.each do |c| %>
         <li><a href="/products?&cat=<%= c.id %>"><%= c.name %></a></li>
       <% end %>

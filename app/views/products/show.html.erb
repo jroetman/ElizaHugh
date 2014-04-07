@@ -1,5 +1,9 @@
 
-<%= image_tag @product.image.url(:small) %>
 
-<%= image_tag @product.image.url(:medium) %>
+
+
+<div class="well col-md-9">
 <%= image_tag @product.image.url(:large) %>
+<h3><%= @product.title %></h3>
+<%= @product.description %>
+</div>
