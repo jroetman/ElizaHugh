@@ -21,6 +21,8 @@ $ ->
   $("#content").on("ajax:complete", ".newSpecial", (data, status, xhr) ->
     $("#specialsTable tbody").append("<tr><td>" + status.responseText))
     
+ 
+    
   
  
     

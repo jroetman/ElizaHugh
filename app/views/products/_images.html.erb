@@ -3,9 +3,9 @@
      <div class="col-sm-4">
      	 <ul class="list-unstyled">
          <li> <%= link_to image_tag(product.image.url(:medium), :size => "250x200"), {:action => 'show', :controller => 'products',  :id => product.id} %> </li>
-	     <li><%= product.title %> </li>
-	     <li>  <%= product.description %> </li>
-		  <li>  <%= product.category.blank? ? " " : product.category.name %> </li>
+	     <li> <%= product.title %> </li>
+	     <li> <%= product.description %> </li>
+		 <li> <%= product.category.blank? ? " " : product.category.name %> </li>
 		 <li class='price'> $<%= product.price %> </li>  
 	    </ul>
 	</div>

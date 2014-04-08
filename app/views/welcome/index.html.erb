@@ -7,13 +7,15 @@
 	    	    <li data-target="#myCarousel" data-slide-to="1"></li>
 	    	    <li data-target="#myCarousel" data-slide-to="2"></li>
 	    	    <li data-target="#myCarousel" data-slide-to="3"></li>
+	    	    <li data-target="#myCarousel" data-slide-to="4"></li>
 	          </ol>
 	          <!-- Carousel items -->
 	          <div class="carousel-inner">
-	         	<div class="active item"><%= image_tag("bag.jpg", size:"750x500", class:"img-rounded") %></div>
-	    	    <div class="item"><%= image_tag("sweater1.jpg", size:"750x500", class:"img-rounded") %></div>
-	    	    <div class="item"><%= image_tag("rug1.jpg", size:"750x500", class:"img-rounded") %></div>
-	    	    <div class="item"><%= image_tag("clothtowels.jpg", size:"750x500", class:"img-rounded") %></div>
+	            <% @products.each_with_index do |prod, idx| %>
+	             	<div class='<%= idx == 0 ? "active item" : "item" %>' >
+	             	    <%= link_to (image_tag prod.image.url(:large), :size => "750x550", :class => "img-rounded"), product_path(prod) %>
+	             	</div>
+	         	<% end %>
 	          </div>
 	          <!-- Carousel nav -->
 	          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>

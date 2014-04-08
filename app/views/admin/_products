@@ -1,47 +1,58 @@
-<div class="row">
 
- <div class="col-sm-2">
-	Create a New Product
-	<%= form_for(@product, :remote=> true, :html => { :multipart => true }) do |form| %>
-	 <p>
-	  <%= form.label :title %><br/>
-	  <%= form.text_field :title %>
-	  </p>
-	  <p>
-	  <%= form.label :description %> <br/>
-	  <%= form.text_area :description %>
-	  </p>
-	  <p>
-	  <%= form.label :category %> <br/>
-	  <%= form.text_field :category  %>
-	  </p>
-	  <p>
-	  <%= form.label :price %> <br/>
-	  <%= form.text_field :price %>
-	  </p>
-	  <p>
-	  <%= form.label "Select Image"	 %> <br/>
-	  <%= form.file_field :image %>
-	  </p>
-	  <%= form.submit %>
-	<% end %>
-  </div>
-  
-   <div class="col-sm-10"> 
-   	<% @products.each do |product| %>
-     <div class="col-sm-2">
-     	 <ul class="list-unstyled">
-         <li>  <%= image_tag product.image.url(:small), :size => "150x100" %> </li>
-	     <li>  <%= product.title %> </li>
-	     <li>  <%= product.description %> </li>
-		 <li>  <%= product.category.blank? ? " " : product.category.name %> </li>
-		 <li class='price'> $<%= product.price %> </li>  
-		 <li> <%= link_to 'Destroy', product, method: :delete, :class => 'remove', data: { confirm: 'Are you sure?' } %> </li>
-	    </ul>
+ <br/>
+ <div class="col-sm-3">
+	<div class="panel panel-default"> 
+     <div class="panel-heading">Add New Product </div>
+	    <div class="panel-body">
+		<%= form_for(@product, :remote=> true, :html => { :multipart => true }) do |form| %>
+		 <p>
+		  <%= form.label :title %><br/>
+		  <%= form.text_field :title %>
+		  </p>
+		  <p>
+		  <%= form.label :description %> <br/>
+		  <%= form.text_area :description %>
+		  </p>
+		  <p>
+		  <%= form.label :category %> <br/>
+		  <%= form.text_field :category  %>
+		  </p>
+		  <p>
+		  <%= form.label :price %> <br/>
+		  <%= form.text_field :price %>
+		  </p>
+		  <p>
+		  <%= form.label "Select Image"	 %> <br/>
+		  <%= form.file_field :image %>
+		  </p>
+		  <%= form.submit :class => 'btn btn-info' %>
+		<% end %>
+		</div>  
 	</div>
-  <% end %>
+  </div>
+  <div class="col-sm-9">
+   <div class="panel panel-default"> 
+     <div class="panel-heading"> Existing Products </div>
+     <div class="panel-body">
+        <div class='prodContainer'>
+		   	<% @products.each do |product| %>
+		    <div class="col-md-4">
+		     	 <ul class="list-unstyled">
+		         <li> <%= image_tag product.image.url(:small), :size => "150x100" %> </li>
+			     <li> <h6><%= product.title %> </h6> </li>
+			     <li> <%= product.description %> </li>
+				 <li> <%= product.category.blank? ? " " : product.category.name %> </li>
+				 <li class='price'> $<%= product.price %> </li>  
+				 <li> <%= link_to 'Edit', [:edit, product], :remote => true, :class => 'editProduct btn btn-xs btn-info' %> 
+				      <%= link_to 'Remove', product, method: :delete, :class => 'btn btn-xs btn-warning remove', data: { confirm: 'Are you sure?' } %> 
+				 </li>
+			    </ul>
+			</div>
+		    <% end %>
+	    </div>
+    </div>
+  </div>
  </div>
- 
  <% if @product.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@product.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -53,4 +64,6 @@
     </ul>
   </div>
 <% end %>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 </div>

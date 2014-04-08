@@ -28,6 +28,13 @@ def destroy
     
 end
 
+def edit
+  @product = Product.find(params[:id])
+  respond_to do |format|
+      format.html {render :edit, layout: false}
+  end
+end
+  
 def createRemote
    @product = Product.new(params[:product].permit(:image, :title, :description, :price))
    @product.category_id = params[:product][:category];
@@ -37,6 +44,29 @@ def createRemote
    else
       redirect_to "/admin/addProductRemote", :flash => { :error => "There was a problem. Contact Jonathan if this persists." }
    end
+end
+
+def update
+
+  @product = Product.find(params[:id])
+  
+  cat = Category.find_by name: params[:category]
+  if cat.blank? 
+     cat = Category.new(:name => params[:category])
+     cat.save()
+     @product.category_id = cat.id
+  end
+  
+  if (@product.update(params[:product].permit(:image, :title, :description, :price)))
+     #Remove empty categories
+     Category.delete_all("NOT EXISTS (SELECT 1 FROM products WHERE category_id = categories.id)")
+     flash[:notice] = "Product Updated"
+     render :partial => "edit"
+     
+  else
+     render :partial => "edit"
+    
+  end
 end
 
 def create
@@ -51,10 +81,9 @@ def create
   @product.category_id = cat.id
   
   if @product.save
-    redirect_to :back
+    redirect_to :admin
     @activeTab = 'products'
   else
-    flash[:notice] = 'product created'
     redirect_to @product
   end
 end

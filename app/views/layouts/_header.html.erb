@@ -15,11 +15,11 @@
       <% categories.each do |c| %>
         <li><a href="/products?&cat=<%= c.id %>"><%= c.name %></a></li>
       <% end %>
-      </ul>
-       <% if :current_user %>
-       <li class='pull-right nav navbar-nav'><a href="authentication/logout"> </a> </li>
+
+       <% if current_user != nil %>
+           <li class='pull-right nav navbar-nav'><a href="/admin"> Admin Page </a><a href="authentication/logout"> Logout </a> </li>
        <% end %>
+      </ul>
     </nav>
-  </div>
-  
-  </div>
+  </div> 
+ </div>

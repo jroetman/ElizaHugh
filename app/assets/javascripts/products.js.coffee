@@ -18,4 +18,7 @@ $ ->
       $.get('/products/partIdx', [], ((data) -> 
          $("#productList").html(data)), 'html')
     )
-
+    $("#content").on("ajax:complete", ".editProduct", (data, status, xhr) ->
+      $("#myModal").html(status.responseText).modal();
+      
+    )
