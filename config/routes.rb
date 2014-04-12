@@ -9,6 +9,9 @@ ElizaHugh::Application.routes.draw do
   get "products/show"
   get "specials/index"
   get "welcome/index"
+  get "users/login"
+  post "create_user" => "users/create"
+
   
   post "products/createRemote"
   
@@ -19,6 +22,7 @@ ElizaHugh::Application.routes.draw do
   get "change_password" => "authentication#change_password" 
   get "forgot_password" => "authentication#forgot_password"
   get "password_sent" => "authentication#password_sent"
+ 
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,41 @@
+<div class="loginPage">
+  <div class="col-md-7"></div>
+  <div class="col-md-5">
+         <div class='col-md-10 loginForm'>
+             <%= form_for @user, :url => {:action => "create"}, :class => 'newUser form-inline', :html => { :multipart => false } do |form| %>
+		         <div class="form-group">
+		   	      <div class="col-md-12">
+		   	      	 <label for="Email">Email</label>  
+		   	          <%= form.text_field :email, :class => "form-control" %>
+		             </div>
+		         </div> 
+		         <div class="form-group">
+		             <div class="col-md-12">
+		                 <label for="Email">Password</label>
+		                 <%= form.password_field :password, :class => "col-md-6 form-control" %>
+		             </div>
+		         </div>
+		         <div class="form-group">
+		             <div class="col-md-12">
+		                 <label for="Email">Confirm Password</label>
+		                 <%= form.password_field :password_confirmation, :class => "form-control", :size => 25 %>
+		             </div>   
+		         </div>
+		         <div class="form-group">
+		             <div class="col-md-12">
+		                 <%= form.submit "Create Account", :class => "inline btn btn-md btn-info active createUserBtn" %>
+		             </div>
+		         </div>
+		     <% end %>
+		     </div>
+		     <div class='loginBack'></div>
+		     <div>
+		     <ul class='notice'>
+		         <% @user.errors.each do |field, msg| %>
+			        <li><%= msg %></li>
+			      <% end %>
+		     </ul>
+		     </div>
+     </div>
+     
+</div>

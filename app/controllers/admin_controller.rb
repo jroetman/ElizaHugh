@@ -1,12 +1,7 @@
 class AdminController < ApplicationController
+  before_action :require_admin
+  
   def index
-     current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
-     
-     if current_user.nil?
-         @user = User.new
-         render :partial => "/users/login", :layout => false
-     end
-     
   end
   
   def specials
@@ -23,20 +18,10 @@ class AdminController < ApplicationController
   end
   
   def addProductRemote
-  
-    current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
-     
-    if current_user.nil?
-        @user = User.new
-        render :partial => "/users/login", :layout => false
-        
-    else
 	    @product = Product.new
 	    @cateogires = Category.all
 	    
-	    render :layout => false 
-	end
-    
+	    render :layout => false     
   end
   
 end

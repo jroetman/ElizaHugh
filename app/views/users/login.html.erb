@@ -1,0 +1,32 @@
+<div class="loginPage">
+    <div class="col-md-7"></div>
+    <div class="col-md-5">
+	    <div class='col-md-10 loginForm'>
+	        <%= form_for @user, :url => authentication_login_path, :class => 'newUser form-inline',   :html => { :multipart => false } do |form| %>
+		    <div class="form-group">
+		   	    <div class="col-md-12">
+		   	       <label for="Email">Email</label>  
+		   	       <%= form.text_field :email, :class => "form-control" %>
+		        </div>
+			 </div>
+	         <div class="form-group">
+		         <div class="col-md-12">
+		             <label for="Email">Password</label>
+		             <%= form.password_field :password, :class => "col-md-6 form-control" %>
+		         </div>
+		     </div>
+		     <div class="form-group">
+		         <div class="col-md-12">
+		             <br><br>
+	                 <button class="btn btn-md btn-info col-sm-3 active" type="submit" >Login</button>
+	                 <a href="/users/new" style='color:#444;' class='col-md-6 btn-lg col-md-offset-1'>  New User ? </a>
+	             </div>
+	         </div>
+	     <% end %>
+	     </div>
+	     <div class='loginBack'></div>
+	     <% if flash[:error] %>
+	         <div class="notice"><%= flash[:error] %></div>
+	     <% end %>
+    </div>
+</div>
