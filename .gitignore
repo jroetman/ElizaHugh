@@ -4,3 +4,5 @@
 /db/production.sqlite3
 /db/schema.rb
 /db/seeds.rb
+/log
+.bundle/install.log
