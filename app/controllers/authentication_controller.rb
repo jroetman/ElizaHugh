@@ -1,32 +1,31 @@
 class AuthenticationController < ApplicationController
+  skip_before_action :require_login
   
   def sign_in
     @user = User.new
   end
 
   def login
-    username_or_email = params[:user][:username]
+    email = params[:user][:email]
     password = params[:user][:password]
     
-    if username_or_email.rindex('@')
-      email= username_or_email
-      user = User.authenticate_by_email(email, password)
-      
-    else
-      username=username_or_email
-      user = User.authenticate_by_username(username, password)
-      
-    end
-
-    if user
-      session[:user_id] = user.id
-      redirect_to admin_path
-      
-    else
+    user = User.find_by_email(email)
+  
+    if user.nil?
       redirect_to :back, :flash => {:error => "Username or Password was wrong."}
-      
-    end
-
+    
+    else 
+	    user = User.authenticate_by_email(user, password)
+	    
+	    if user
+	      session[:user_id] = user.id
+	      redirect_to root_path
+	      
+	    else
+	      redirect_to :back, :flash => {:error => "Username or Password was wrong."}
+	      
+	    end
+	 end
  end
  
  def logout

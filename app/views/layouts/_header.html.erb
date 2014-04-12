@@ -17,7 +17,13 @@
       <% end %>
 
        <% if current_user != nil %>
-           <li class='pull-right nav navbar-nav'><a href="/admin"> Admin Page </a><a href="authentication/logout"> Logout </a> </li>
+           <% if is_admin %>
+               <li class='pull-right nav navbar-nav'><a href="/admin"> Admin Page </a><a href="authentication/logout"> Logout </a> </li>
+           <% else %>
+               <li class='pull-right nav navbar-nav'>- Welcome <%= current_user.username %> - <a href="/admin"><span class="glyphicon glyphicon-shopping-cart"> </span></a> | <a href="authentication/logout"> Logout </a> </li>
+           <% end %>
+       <% else %>
+           <li class='pull-right nav navbar-nav'><a href="/users/login"> Login </a>|<a href="/users/new">  Create Account </a> </li>
        <% end %>
       </ul>
     </nav>

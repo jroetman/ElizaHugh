@@ -1,26 +1,14 @@
 class User < ActiveRecord::Base
   before_save :encrypt_password
-
-  validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email, :on => :create
-  validates_presence_of :username, :on => :create
-  validates_uniqueness_of :email
-  validates_uniqueness_of :username
-
-  def self.authenticate_by_email(email, password)
-    user = find_by_email(email)
-    if user && user.password == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    else
-      nil
-    end
-  end
-
-  def self.authenticate_by_username(username, password)
-    user =  User.where(username: username).take
-
-    if BCrypt::Password.new(user.password).is_password? password
+  validates :password, :confirmation =>  {message: "Passwords don't match"}
+  validates :password_confirmation, :presence => {message: "Password confirmation required"}
+  validates :password, :presence => {message: "Password required"}
+  validates_presence_of :email, message: "Email required"
+  validates :email, format: {message: "Email is invalid", with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+  validates_uniqueness_of :email, message: "Email address already taken"
+  
+  def self.authenticate_by_email(user, password)
+    if BCrypt::Password.new(user.password) == password
       user
     else
       nil
@@ -29,8 +17,8 @@ class User < ActiveRecord::Base
 
   def encrypt_password
     if password.present?
-      self.password =  BCrypt::Password.create password.to_s
+      self.password =  BCrypt::Password.create password
     end
   end
-
+  
 end

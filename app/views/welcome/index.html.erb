@@ -1,6 +1,6 @@
 
     <div class="text-center">
-	    <div class="col-md-8">
+	    <div class="col-md-7">
 	        <div id="myCarousel" class="carousel slide">
 	          <ol class="carousel-indicators">
 	    	    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -13,7 +13,7 @@
 	          <div class="carousel-inner">
 	            <% @products.each_with_index do |prod, idx| %>
 	             	<div class='<%= idx == 0 ? "active item" : "item" %>' >
-	             	    <%= link_to (image_tag prod.image.url(:large), :size => "750x550", :class => "img-rounded"), product_path(prod) %>
+	             	    <%= link_to (image_tag prod.image.url(:large), :class => "img-rounded"), product_path(prod) %>
 	             	</div>
 	         	<% end %>
 	          </div>

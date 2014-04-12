@@ -54,14 +54,15 @@ def update
   if cat.blank? 
      cat = Category.new(:name => params[:category])
      cat.save()
-     @product.category_id = cat.id
   end
   
   if (@product.update(params[:product].permit(:image, :title, :description, :price)))
+     @product.update(category_id: cat.id)
      #Remove empty categories
      Category.delete_all("NOT EXISTS (SELECT 1 FROM products WHERE category_id = categories.id)")
      flash[:notice] = "Product Updated"
-     render :partial => "edit"
+     flash[:prodId] =  @product.id
+     redirect_to :back
      
   else
      render :partial => "edit"
@@ -89,8 +90,6 @@ def create
 end
 
 def require_login
-
-
 end
 
 end

@@ -1,0 +1,41 @@
+<!-- Modal -->
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"><%= @product.title %></h4>
+      </div>
+      <%= form_for(@product, :remote=> true, :html => { :multipart => true }, :class => "editProduct", :action => "/update") do |form| %>
+      <div class="modal-body">
+          <h3> Edit Product </h3>
+			  <p>
+			  <%= form.label :title %><br/>
+			  <%= form.text_field :title , :size => 40 %>
+			  </p>
+			  <p>
+			  <%= form.label :description %> <br/>
+			  <%= form.text_area :description, :size => "40x8" %>
+			  </p>
+			  <p>
+			  <%= form.label :category %> <br/>
+			  <input type="text" name="category" value="<%= @product.category != nil ? @product.category.name : '' %>" />
+			  </p>
+			  <p>
+			  <%= form.label :price %> <br/>
+			  <%= form.text_field :price %>
+			  </p>
+			  <p>
+			  <%= image_tag @product.image.url(:small), :size => "150x100" %>
+			  <br/>
+			  <%= form.label "Change Image"	 %> 
+			  <%= form.file_field :image %>
+			  </p>
+	          <div id="message" class="notice"> <%= flash[:notice] %></div>
+      </div>
+      <div class="modal-footer">
+          <%= form.submit :class => 'btn btn-info' %>
+          <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->

@@ -5,9 +5,12 @@ $ ->
   $('#adminTabs').on('shown.bs.tab', (e) ->
     target = $(e.target).attr("href") 
     $.get("/admin/" + target.replace(/#/, ''), ((data) ->
-      $("#adminContent").html(data)), 'html')
-
+      $("#adminContent").html(data)
+      $("#content").trigger("refreshProducts")
+      ), 'html')
+     
   )
+  
   
   $('#adminTabs a:first').tab('show'); 
     
@@ -20,9 +23,11 @@ $ ->
 
   $("#content").on("ajax:complete", ".newSpecial", (data, status, xhr) ->
     $("#specialsTable tbody").append("<tr><td>" + status.responseText))
-    
- 
-    
+     
+  $("#content").on("refreshProducts", () ->
+    $(".prodContainer:first").scrollTop($(".updated:first").offset().top - $(".prodContainer:first").offset().top)
+  )
+
   
- 
+  
     

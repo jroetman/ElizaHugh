@@ -5,7 +5,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel"><%= @product.title %></h4>
       </div>
-      <%= form_for(@product, :remote=> true, :html => { :multipart => true }, :class => "editProduct", :action => "/update") do |form| %>
+      <%= form_for(@product, :html => { :multipart => true }, :class => "editProduct", :action => "/update") do |form| %>
       <div class="modal-body">
           <h3> Edit Product </h3>
 			  <p>
@@ -34,7 +34,7 @@
       </div>
       <div class="modal-footer">
           <%= form.submit :class => 'btn btn-info' %>
-          <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal" aria-hidden="true">Close</button>
+          <button type="button" id="updateProduct" class="btn btn-sm btn-warning" data-dismiss="modal" aria-hidden="true">Close</button>
       </div>
       <% end %>
     </div><!-- /.modal-content -->
