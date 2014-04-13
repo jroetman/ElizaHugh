@@ -1,4 +1,4 @@
-#content {min-height:520px;}
+#content {min-height:500px;}
 
 .container{max-width:980px}
 .whitespace {white-space:pre;}
@@ -7,6 +7,7 @@
 .foot {margin-top:5px;background:url("/assets/foxpumpkin.jpg");background-size:100%; background-position:10% 80%;}
 .headnav {height:30px;min-height:30px;background:white;}
 .navbar {margin-bottom:5px;}
+.panel-body {padding-bottom:2px;}
 
 .navbar{
     background-color:white;
@@ -48,16 +49,16 @@ body {padding-top:0px;}
 .fl {height:75px;background:white;opacity:0.8;}
 .addy p{margin-top:10px;}
 .logo {margin-left:-30px;}
-#productList {height:520px;overflow:auto;}
+#productList {height:500px;overflow:auto;}
 #myCarousel {margin-top:0px;margin-bottom:10px;background:#ddE;}
 .loginHead {color:#003377}
-.loginPage {background:url("/assets/chestRugs.jpg"); background-position:0% 0%;background-size:180% 180%;height:520px;}
+.loginPage {background:url("/assets/chestRugs.jpg"); background-position:0% 0%;background-size:180% 180%;height:500px;}
 .loginBack {position:absolute;width:100%;border-radius:3px;z-index:0;border:1px solid white;margin:10px;background:white;opacity:0.5;height:255px;}
 .new_user {padding-top:20px;padding-left:5px;}
 .createUserBtn {margin-bottom:15px;margin-left:5px;}
-.notice {margin:10px;border-radius:3px;color: white;font-size:18px;background-color:#68A;min-height:0px !important;}
+.notice {position:relative;top:-20px;min-height:55px;width:100%;z-index:10;margin:10px;border-radius:3px;color: white;font-size:18px;background-color:#68A;}
+.loginNotice {position:relative;z-index:10;top:15px;color:#A00;font-size:16px;}
 .notice li {list-style:square;clear:both;}
-
 .updated {background:#EEEAE3;}
 
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {

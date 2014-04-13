@@ -12,7 +12,7 @@ class AuthenticationController < ApplicationController
     user = User.find_by_email(email)
   
     if user.nil?
-      redirect_to :back, :flash => {:error => "Username or Password was wrong."}
+      redirect_to :back, :flash => {:error => "Email or Password Incorrect"}
     
     else 
 	    user = User.authenticate_by_email(user, password)
@@ -22,7 +22,7 @@ class AuthenticationController < ApplicationController
 	      redirect_to root_path
 	      
 	    else
-	      redirect_to :back, :flash => {:error => "Username or Password was wrong."}
+	      redirect_to :back, :flash => {:error => "Email or Password Incorrect"}
 	      
 	    end
 	 end

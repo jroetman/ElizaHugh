@@ -1,4 +1,4 @@
-<div class="loginPage col-md-12">
+<div class="loginPage">
     <div class="col-md-7"></div>
     <div class="col-md-5">
         <div class='col-md-10'>
@@ -28,13 +28,14 @@
 	            </div>
 	        </div>
 	        <% end %>
-	    </div>
-		<div>
+	        <% if @user.errors.size > 0 %>
 		    <ul class='notice'>
 		        <% @user.errors.each do |field, msg| %>
 		        <li><%= msg %></li>
 		        <% end %>
 		    </ul>
-		</div>
+		    <% end %>
+	    </div>
+		
     </div>
 </div>
