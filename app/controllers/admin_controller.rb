@@ -11,7 +11,7 @@ class AdminController < ApplicationController
   end
   
   def products
-    @products = Product.all
+    @products = Product.all.map
     @product = Product.new
     render :partial => "products", :layout => false, :locals => {:products => @products}
     

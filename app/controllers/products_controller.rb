@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
  def index   
     @cat = params[:cat]
     @products =  @cat.blank? ? Product.all : Product.where(category_id: @cat) 
+    @products =  @products
  end
  
  def partIdx

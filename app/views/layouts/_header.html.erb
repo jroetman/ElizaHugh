@@ -9,23 +9,36 @@
  
   <a href="/"><div class="row head"> <%= image_tag("ehLogo.png", :size => "270x90") %> </div></a>
   <div class="row">
-  <div class="headrow col-xs-12">
-    <nav class="headnav navbar navbar-default" role="navigation">
-      <ul class="list-inline navbar">
-      <% categories.each do |c| %>
-        <li><a href="/products?&cat=<%= c.id %>"><%= c.name %></a></li>
-      <% end %>
-
-       <% if current_user != nil %>
-           <% if is_admin %>
-               <li class='pull-right nav navbar-nav'><a href="/admin"> Admin Page </a><a href="authentication/logout"> Logout </a> </li>
-           <% else %>
-               <li class='pull-right nav navbar-nav'>- Welcome <%= current_user.username %> - <a href="/admin"><span class="glyphicon glyphicon-shopping-cart"> </span></a> | <a href="authentication/logout"> Logout </a> </li>
-           <% end %>
-       <% else %>
-           <li class='pull-right nav navbar-nav'><a href="/users/login"> Login </a>|<a href="/users/new">  Create Account </a> </li>
-       <% end %>
-      </ul>
+  <div class="headrow">
+    <nav class="headnav navbar navbar-default  col-md-12" role="navigation">
+     <div class="col-md-1">
+          <ul class="nav nav-pills list-inline">
+		      <li><a href="/"> <span class="glyphicon glyphicon-home"></a> </span> </li>
+	      </ul>
+      </div>
+      <div class="col-md-7">
+	      <ul class="nav nav-pills list-inline">
+		      <% categories.each do |c| %>
+		        <li><a href="/products?&cat=<%= c.id %>"><%= c.name %></a></li>
+		      <% end %>
+	      </ul>
+	   </div>
+	   <div class="col-md-4">
+	        <ul class="loginNav col-md-12 nav nav-pills list-inline">
+	        <% if current_user != nil %> 
+	           <% if is_admin %>
+	               <li><a href="/admin"> Admin Page </a><a href="authentication/logout"> Logout </a> </li>
+	           <% else %>
+	               <li>- Welcome <%= current_user.username %> - <a href="/admin"><span class="glyphicon glyphicon-shopping-cart"> </span></a></li>
+	               <li><a href="authentication/logout"> Logout </a> </li>
+	           <% end %>
+	        <% else %>
+	           <li class='col-md-7'><a href="/users/new">Create Account</a></li>
+	           <li class='col-md-1'>|</li>
+	           <li class='col-md-3'><a href="/users/login">Login</a></li>
+	        <% end %>
+	      </ul>
+	   </div>
     </nav>
   </div> 
  </div>

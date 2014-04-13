@@ -25,7 +25,8 @@ $ ->
     $("#specialsTable tbody").append("<tr><td>" + status.responseText))
      
   $("#content").on("refreshProducts", () ->
-    $(".prodContainer:first").scrollTop($(".updated:first").offset().top - $(".prodContainer:first").offset().top)
+    if ($(".updated").length == 1)
+      $(".prodContainer:first").scrollTop($(".updated:first").offset().top - $(".prodContainer:first").offset().top)
   )
 
   

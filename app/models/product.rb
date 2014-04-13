@@ -1,8 +1,6 @@
 class Product < ActiveRecord::Base
-#  attr_accessible :title, :description, :paragraph
-   #attr_accessible :avatar
   belongs_to :category
-  
+
   has_attached_file :image, 
                     :styles => {
                       :small => "150x150>",
