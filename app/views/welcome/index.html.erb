@@ -1,40 +1,38 @@
 
-    <div class="text-center">
-	    <div class="col-md-7">
-	        <div id="myCarousel" class="carousel slide">
-	          <ol class="carousel-indicators">
+<div class="">
+    <div class="col-md-7">
+        <div id="myCarousel" class="carousel slide">
+            <ol class="carousel-indicators">
 	    	    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 	    	    <li data-target="#myCarousel" data-slide-to="1"></li>
 	    	    <li data-target="#myCarousel" data-slide-to="2"></li>
 	    	    <li data-target="#myCarousel" data-slide-to="3"></li>
 	    	    <li data-target="#myCarousel" data-slide-to="4"></li>
-	          </ol>
-	          <!-- Carousel items -->
-	          <div class="carousel-inner">
-	            <% @products.each_with_index do |prod, idx| %>
-	             	<div class='<%= idx == 0 ? "active item" : "item" %>' >
-	             	    <%= link_to (image_tag prod.image.url(:large), :class => "img-rounded"), product_path(prod) %>
-	             	</div>
-	         	<% end %>
-	          </div>
-	          <!-- Carousel nav -->
-	          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-	          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-	        </div>
-	      </div>
-	    </div>
-
-        <div class="col-md-5" ng-controller="SpecialsCtrl">
+            </ol>
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+                <% @products.each_with_index do |prod, idx| %>
+               	<div class='<%= idx == 0 ? "active item" : "item" %>' >
+               	    <%= link_to (image_tag prod.image.url(:large), :class => "img-rounded"), product_path(prod) %>
+               	</div>
+           	    <% end %>
+            </div>
+            <!-- Carousel nav -->
+            <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+        </div>
+    </div>
+    
+    <div class="col-md-5" ng-controller="SpecialsCtrl">
         <% @specials.each do |product| %>
-	    <div class="specials row">
-	      <div class="col-xs-12">
-		    <div class="alert" <%= product.getStyle %>>
-		      <h4><%= product.title %></h4>
-		      <p> <%= product.description %></p>
-		    </div>
-	      </div>
-	    </div>
-		<% end %>	
-	    </div>
-		
-   </div>
+        <div class="specials row">
+            <div class="col-xs-12">
+	            <div class="alert" <%= product.getStyle %>>
+	              <h4><%= product.title %></h4>
+	              <p> <%= product.description %></p>
+	            </div>
+            </div>
+        </div>
+	    <% end %>	
+    </div>
+</div>
