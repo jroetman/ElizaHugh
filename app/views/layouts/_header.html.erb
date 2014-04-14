@@ -6,11 +6,10 @@
       }
     });
   </script>
-  <div class="col-md-12">
+  <div class="col-sm-12">
   <a href="/"><div class="head"> <%= image_tag("ehLogo.png", :size => "270x90") %> </div></a>
   <nav class="navbar navbar-default" role="navigation">
-      <div class="container-fluid">
-	
+      <div class="container">
 		     <ul class="nav navbar-nav">
 			      <li class=""><a href="/"> <span class="glyphicon glyphicon-home"></a> </span> </li>
 			      <% categories.each do |c| %>
@@ -21,11 +20,11 @@
 			        <% if current_user != nil %> 
 			           <% if is_admin %>
 			               <li><a href="/admin"> Admin Page </a></li>
-			               <li><a href="authentication/logout"> Logout </a> </li>
+			               <li><a href="/authentication/logout"> Logout </a> </li>
 			           <% else %>
 			               <li>- Welcome <%= current_user.username %> - <a href="/admin"><span class="glyphicon glyphicon-shopping-cart"> </span></a></li>
 			               <li>|</li>
-			               <li><a href="authentication/logout"> Logout </a> </li>
+			               <li><a href="/authentication/logout"> Logout </a> </li>
 			           <% end %>
 			        <% else %>
 			           <li><a href="/users/new">Create Account</a></li>

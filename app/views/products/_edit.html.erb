@@ -13,8 +13,12 @@
 			  <%= form.text_field :title , :size => 40 %>
 			  </p>
 			  <p>
-			  <%= form.label :description %> <br/>
+			  <label> Short Description </label>
 			  <%= form.text_area :description, :size => "40x8" %>
+			  </p>
+			  <p>
+			  <%= form.label :long_description %> <br/>
+			  <%= form.text_area :long_description, :size => "40x8" %>
 			  </p>
 			  <p>
 			  <%= form.label :category %> <br/>

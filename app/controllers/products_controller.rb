@@ -57,7 +57,7 @@ def update
      cat.save()
   end
   
-  if (@product.update(params[:product].permit(:image, :title, :description, :price)))
+  if (@product.update(params[:product].permit(:image, :title, :description, :price, :long_description)))
      @product.update(category_id: cat.id)
      #Remove empty categories
      Category.delete_all("NOT EXISTS (SELECT 1 FROM products WHERE category_id = categories.id)")

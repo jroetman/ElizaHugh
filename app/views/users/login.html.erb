@@ -1,30 +1,30 @@
 <div class="loginPage">
-    <div class="col-md-7"></div>
-    <div class="col-md-5">
-	    <div class='col-md-10'>
+    <div class="col-sm-7"></div>
+    <div class="col-sm-5">
+	    <div class='col-sm-10'>
 	        <div class='loginBack'></div>
-	        <%= form_for @user, :url => authentication_login_path, :class => 'col-md-12',   :html => { :multipart => false } do |form| %>
+	        <%= form_for @user, :url => authentication_login_path, :class => 'col-sm-12',   :html => { :multipart => false } do |form| %>
 		   
-		   	    <div class="col-md-12">
+		   	    <div class="col-sm-12">
 		   	       <label for="Email">Email</label>  
 		   	       <%= form.text_field :email, :class => "form-control" %>
 		        </div>
 
 	      
-		        <div class="col-md-12">
+		        <div class="col-sm-12">
 		            <label for="Email">Password</label>
 		            <%= form.password_field :password, :class => "form-control" %>
 		        </div>
 
-		        <div class="col-md-12">
-		            <div class="col-md-6">
+		        <div class="col-sm-12">
+		            <div class="col-sm-6">
 		                <label for="Login"></label>
 	                    <button class="btn btn-md btn-info active form-control" type="submit" >Login</button>
 	                </div>
 	            </div>
 	            
-	           <div class="col-md-12">
-	               <div class="col-md-6">
+	           <div class="col-sm-12">
+	               <div class="col-sm-6">
 	                   <label for="New User"></label> 
 	                   <a href="/users/new" style='color:#444;' class='btn btn-link form-control'> New User ?</a>
 	               </div>
