@@ -1,4 +1,6 @@
 ElizaHugh::Application.routes.draw do
+  resources :carts
+
   get "admin/index"
   get "admin/specials"
   get "admin/products"
@@ -10,11 +12,12 @@ ElizaHugh::Application.routes.draw do
   get "specials/index"
   get "welcome/index"
   get "users/login"
+  get "cart" => "cartitems#index"
   post "create_user" => "users/create"
-
+  post "products/:id/add_to_cart" => "cartitems#add"
+  get  "cartitems/delete/:id" => "cartitems#delete"
   
   post "products/createRemote"
-  
   #authentication
   post "authentication/login"
   get  "authentication/logout"
@@ -22,13 +25,15 @@ ElizaHugh::Application.routes.draw do
   get "change_password" => "authentication#change_password" 
   get "forgot_password" => "authentication#forgot_password"
   get "password_sent" => "authentication#password_sent"
- 
+  
+   
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -40,19 +45,13 @@ ElizaHugh::Application.routes.draw do
   resources :products
   resources :specials
   resources :users
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
+ 
+ 
+  resources :products do
+      member do
+        post 'add_to_cart'
+      end
+  end
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

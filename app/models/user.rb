@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :cartitems, foreign_key: "userid"
+   
   before_save :encrypt_password
   validates :password, :confirmation =>  {message: "Passwords don't match"}
   validates :password_confirmation, :presence => {message: "Password confirmation required"}

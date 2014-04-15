@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="col-sm-8">
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+        <h3 class="panel-title">Your cart</h3>
+      </div>
+	  <div class="panel-body">
+		   <table class="table">
+		    
+		    <tbody>
+			<% @cartitems.each_with_index do |item, idx| %>
+			  <tr>
+			    <td><%= image_tag item.product.image.url(:small) %></td>
+			    <td><p class="whitespace"><%= item.product.description %></p></td>
+			    <td><%= item.product.price  %> </td>
+			    <td><%= link_to "Remove Item", {action: 'delete', id: item.id}, class: "btn btn-xs btn-default" %> </td>
+			  </tr>
+			<% end %>
+			</tbody>
+		  </table>
+	  </div>
+	  <div class="panel-footer">
+	    <div class='checkoutFoot'><%= link_to "Checkout", "/", class: "btn btn-md btn-info" %></div>
+	  </div>
+	</div>
+</div>
