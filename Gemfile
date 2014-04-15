@@ -47,4 +47,3 @@ gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'd3js-rails'
 gem 'paperclip', "~> 3.5"
 gem 'font-awesome-rails'
-gem 'thin'

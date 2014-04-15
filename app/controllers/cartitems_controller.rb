@@ -1,6 +1,7 @@
 class CartitemsController < ApplicationController
   before_action :require_login
   
+  
   def index
      @cartitems = current_user.cartitems
      render template: "/cartitems/show"

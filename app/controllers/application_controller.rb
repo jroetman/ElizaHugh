@@ -4,24 +4,28 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session 
   before_action :require_login
   
-  helper_method :current_user
+  helper_method :current_user, :is_admin, :categories, :item_in_cart
   def current_user
     # Note: we want to use "find_by_id" because it's OK to return a nil.
     # If we were to use User.find, it would throw an exception if the user can't be found.
     @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
   end
-  
-  helper_method :is_admin
+
   def is_admin
     user = User.find_by_id(session[:user_id]) if session[:user_id]
     user.user_role == "admin"
    
   end
-  
-  helper_method  :categories
+
   def categories
     @categories = Category.all
   end
+  
+  def item_in_cart(product)
+     Cartitem.exists?(userid: current_user.id, productid: product.id)
+     
+  end
+  
   
   private
   
