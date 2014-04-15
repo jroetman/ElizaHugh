@@ -7,10 +7,12 @@
 	    <p class="whitespace"><%= @product.description %></p> 
 	    <p class="price">$<%=  sprintf("%.2f", (@product.price)) %></p> 
 	    <p class="longDescription"><%= @product.long_description %> </p>
-	    <% if !item_in_cart(@product)  %>
-	        <%= link_to "Add to Cart", add_to_cart_product_path, method: :post, prodId: @product.id, class: "btn btn-sm btn-info" %>
-	    <% else %>
-	       <a href="/cart"><span class="btn btn-default glyphicon glyphicon-shopping-cart"> </span></a> In Cart
+	    <% if current_user %>
+		    <% if !item_in_cart(@product)  %>
+		        <%= link_to "Add to Cart", add_to_cart_product_path, method: :post, prodId: @product.id, class: "btn btn-sm btn-info" %>
+		    <% else %>
+		       <a href="/cart"><span class="btn btn-default glyphicon glyphicon-shopping-cart"> </span></a> In Cart
+		    <% end %>
 	    <% end %>
       </div>
 </div>
