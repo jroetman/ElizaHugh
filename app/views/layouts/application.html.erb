@@ -22,12 +22,10 @@
 
   <body>
     <div class="main container">
-      <%= render partial: 'layouts/header' %>
-	  <div id="content" class="col-xs-12">
+        <%= render partial: 'layouts/header' %>
+        <%= yield  %>
         <br>
-        <%= yield %>
-      </div>    
-      <%= render partial: 'layouts/footer' %>
+        <%= render partial: 'layouts/footer' %>
 	</div>
   </body>
 </html>

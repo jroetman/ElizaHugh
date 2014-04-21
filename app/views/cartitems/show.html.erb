@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-
 <div class="col-sm-8">
 	<div class="panel panel-default">
 	  <div class="panel-heading">
@@ -21,7 +20,41 @@
 		  </table>
 	  </div>
 	  <div class="panel-footer">
-	    <div class='checkoutFoot'><%= link_to "Checkout", "/", class: "btn btn-md btn-info" %></div>
+	    
 	  </div>
 	</div>
 </div>
+<div class="col-sm-4">
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+        <h3 class="panel-title">Order Summary</h3>
+      </div>
+	  <div class="panel-body cartSummary">
+	    <ul>
+			<li>CART TOTAL     <span class="pull-right"><%= sprintf("%.2f", current_user.cart_total) %></span></li>
+			<li>SHIPPING       <span class="pull-right"><%= sprintf("%.2f", getShipping) %></span> </li>
+			<li>ESTIMATED TAX  <span class="pull-right"><%= sprintf("%.2f", (getTax * current_user.cart_total)) %></span></li>
+			<li class='total'>TOTAL <span class="pull-right"><%= sprintf("%.2f", (current_user.cart_total + (getTax * current_user.cart_total) + getShipping)) %> </span></li>
+	    </ul>
+	    
+	  </div>
+	  <div class="panel-footer">
+	    <div class='checkoutFoot'>
+			<%= form_tag({controller: "cartitems", action: "charge"}) do %>
+			  <script
+			    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+			    data-key="pk_test_VfHP98Jj6JcxsM3JGHjvYrne"
+			    data-amount="<%= current_user.cart_total * 100 %>"
+			    data-name="Eliza Hugh"
+			    data-description="Purchase of <%= current_user.cartitems.size %> items."
+			    data-image="/128x128.png">
+			  </script>
+			<% end %>	
+			<% flash.each do |name, msg| -%>
+     		 <%= content_tag :div, msg, class: name %>
+   		   <% end -%>       
+	    </div>
+	  </div>
+	</div>
+</div>
+

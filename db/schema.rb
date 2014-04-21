@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415025230) do
+ActiveRecord::Schema.define(version: 20140418200317) do
+
+  create_table "billing_addresses", force: true do |t|
+    t.integer  "userid"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "company"
+    t.string   "address"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "zip"
+    t.string   "country"
+    t.string   "state"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cartitems", force: true do |t|
     t.integer  "userid"
@@ -22,6 +38,12 @@ ActiveRecord::Schema.define(version: 20140415025230) do
 
   create_table "categories", force: true do |t|
     t.string "name"
+  end
+
+  create_table "payment_info", force: true do |t|
+    t.string  "vendor"
+    t.decimal "tax"
+    t.decimal "shipping"
   end
 
   create_table "products", force: true do |t|
@@ -37,6 +59,22 @@ ActiveRecord::Schema.define(version: 20140415025230) do
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id"
+
+  create_table "shipping_addresses", force: true do |t|
+    t.integer  "userid"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "company"
+    t.string   "address"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "zip"
+    t.string   "country"
+    t.string   "state"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "specials", force: true do |t|
     t.string "title"

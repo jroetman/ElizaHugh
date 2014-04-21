@@ -5,10 +5,11 @@
 .tnav .navbar .container .navbar-default { height: 28px; }
 .head {text-align:right;padding-top:0px;height:120px;background:url("/assets/springBack.jpg");background-size:100% 390px; background-position:0px 70%;}
 .head img {max-width:350px;margin:2px;height:115px;}
-.foot {margin-top:5px;background:url("/assets/springBack.jpg");background-size:150%; background-position:0px 100%;}
+.foot {clear:both;margin-top:5px;background:url("/assets/springBack.jpg");background-size:150%; background-position:0px 100%;}
 .loggedIn {color:#557;margin-top:15px;}
 .navbar {margin-bottom:5px;}
 .panel-body {padding-bottom:2px;}
+.panel-footer {height:50px;}
 
 .navbar{
     background-color:white;

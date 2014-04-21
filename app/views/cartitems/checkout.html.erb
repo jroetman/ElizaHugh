@@ -1,0 +1,103 @@
+<div class="col-sm-7">
+	<%= form_for(@billingAddress,  :role => "form-inline") do |f| %>    
+	  <% if @billingAddress.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@cart.errors.count, "error") %> prohibited this cart from being saved:</h2>
+	
+	      <ul>
+	      <% @billinAddress.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+	  <div class="field">
+	    <%= f.label :first_name %>
+	    <%= f.text_field :first_name, class: "form-control" %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :last_name %>
+	    <%= f.text_field :last_name, class: "form-control"  %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :address %>
+	    <%= f.text_field :address, class: "form-control"  %>
+	  </div><br>
+	   <div class="field">
+	    <%= f.label :address2 %>
+	    <%= f.text_field :address2, class: "form-control"  %>
+	  </div><br>
+	  <div class="field">
+	    <%= f.label :city %>
+	    <%= f.text_field :city, class: "form-control"  %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :state %><br>
+	    <%= f.text_field :state, class: "form-control" , size:4 %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :zip %>
+	    <%= f.text_field :zip, class: "form-control", size: 10  %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :phone %><br>
+	    <%= f.text_field :phone, class: "form-control"  %>
+	  </div><br>
+	  <div class="field">
+	    <%= f.submit class: "btn btn-md btn-info" %>
+	  </div>
+	<% end %>
+	
+	<input type="checkbox" class='shipping'> Different Shipping Address? </input><br><Br>
+	
+	<%= form_for(@shippingAddress) do |f| %>    
+	  <% if @shippingAddress.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@shippingAddress.errors.count, "error") %> prohibited this cart from being saved:</h2>
+	
+	      <ul>
+	      <% @shippingAddress.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+	  <div class="field">
+	    <%= f.label :first_name %>
+	    <%= f.text_field :first_name, class: "form-control" %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :last_name %>
+	    <%= f.text_field :last_name, class: "form-control"  %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :address %>
+	    <%= f.text_field :address, class: "form-control"  %>
+	  </div><br>
+	   <div class="field">
+	    <%= f.label :address2 %>
+	    <%= f.text_field :address2, class: "form-control"  %>
+	  </div><br>
+	  <div class="field">
+	    <%= f.label :city %>
+	    <%= f.text_field :city, class: "form-control"  %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :state %><br>
+	    <%= f.text_field :state, class: "form-control" , size:4 %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :zip %>
+	    <%= f.text_field :zip, class: "form-control", size: 10  %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :phone %><br>
+	    <%= f.text_field :phone, class: "form-control"  %>
+	  </div><br>
+	  <div class="field">
+	    <%= f.submit class: "btn btn-md btn-info" %>
+	  </div>
+	<% end %>
+	<br><br>
+</div>
+

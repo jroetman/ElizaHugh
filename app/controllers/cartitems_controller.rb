@@ -18,12 +18,47 @@ class CartitemsController < ApplicationController
       redirect_to  :back
   
   end
+  
 
   def delete 
       cart = Cartitem.find(params[:id])
       cart.destroy
       
       redirect_to "/cart"
+  end
+  
+  def checkout
+      @billingAddress = BillingAddress.new
+      @shippingAddress = ShippingAddress.new
+  end
+  
+  def charge
+  
+      Stripe.api_key = "sk_test_lK7yQFkgDa3OUgv0YLMxaSPW"
+	
+      # Get the credit card details submitted by the form
+      token = params[:stripeToken]
+	
+      # Create the charge on Stripe's servers - this will charge the user's card
+      begin
+	    charge = Stripe::Charge.create(
+	    :amount => (current_user.cart_total * 100).to_i, # amount in cents, again
+	    :currency => "usd",
+	    :card => token,
+	    :description => "Eliza Hugh purchase."
+	   )
+	   
+	    flash[:notice] = "Your purchase is complete. Thank You." 
+        current_user.cartitems.destroy
+        Cartitem.destroy_all(:userid => current_user.id)
+        
+      rescue => e
+        flash[:notice] = "There was an error: " + e.to_s;
+        
+  	  end
+  	  
+  	  redirect_to "/cart/complete"
+
   end
   
   private

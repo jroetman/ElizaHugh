@@ -4,6 +4,8 @@ ElizaHugh::Application.routes.draw do
   get "admin/index"
   get "admin/specials"
   get "admin/products"
+  get "admin/paymentSettings"
+  post "admin/updatePaymentInfo"
   get 'admin', to: 'admin#index'
   get "admin/addProductRemote"
   get "products/index"
@@ -12,10 +14,14 @@ ElizaHugh::Application.routes.draw do
   get "specials/index"
   get "welcome/index"
   get "users/login"
-  get "cart" => "cartitems#index"
+  get  "cart"  => "cartitems#index"
   post "create_user" => "users/create"
   post "products/:id/add_to_cart" => "cartitems#add"
   get  "cartitems/delete/:id" => "cartitems#delete"
+  get  "cart/checkout" => "cartitems#checkout"
+  post "cart/charge" => "cartitems#charge"
+  get  "cart/complete" => "cartitems#complete"
+  
   
   post "products/createRemote"
   #authentication
@@ -45,6 +51,8 @@ ElizaHugh::Application.routes.draw do
   resources :products
   resources :specials
   resources :users
+  resources :billing_addresses	
+  resources :shipping_addresses
  
  
   resources :products do

@@ -4,3 +4,10 @@
 
 .checkoutFoot {text-align:right}
 .cart {overflow:auto;height:360px;}
+.cartSummary {height:130px;}
+.cartSummary ul {padding-left:0px;margin-left:-5px;}
+.cartSummary li {border-bottom: 1px dashed;margin:5px;font-family: Papyrus, fantasy;}
+.total {border-bottom:0px !important;font-weight:bold;font-size:15px;}
+.new_billing_address div {display:inline-block;}
+.new_shipping_address div {display:inline-block;}
+label {font-family: Papyrus, fantasy;}

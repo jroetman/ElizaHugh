@@ -17,6 +17,24 @@ class AdminController < ApplicationController
     
   end
   
+    
+  def paymentSettings
+    @settings = PaymentInfo.select("payment_info.*").from("payment_info")
+    render :partial => "paymentSettings", :layout => false
+    
+  end
+  
+  def updatePaymentInfo
+    pi = PaymentInfo.find(params[:payment_info][:id])
+    pi.update(params[:payment_info].permit(:id, :tax))
+    @settings = PaymentInfo.select("payment_info.*").from("payment_info")
+     
+    respond_to do |format|
+      format.json {render :json => { :message => "success"}}
+    end
+  
+  end
+  
   def addProductRemote
 	    @product = Product.new
 	    @cateogires = Category.all

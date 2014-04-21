@@ -1,0 +1,21 @@
+<br>
+<div class="col-xs-3">
+	<div class="panel panel-default"> 
+     <div class="panel-heading"> </div>
+	    <div class="panel-body">
+		<% @settings.each do |s| %>
+		    <%= form_for s, url: {action: "updatePaymentInfo"}, remote: true, method: :POST do |form| %>
+		      <%= form.hidden_field :id %>
+		      <label class="">Vendor</label>
+		      <%= form.text_field :vendor %>
+		      <label class=""> Shipping </label>
+		      <%= form.text_field :shipping	 %>
+		      <label class=""> Tax </label>
+		      <%= form.text_field :tax %>
+		      <br><br>
+		      <%= form.submit :class => 'btn btn-info col-md-11' , :value => "Update" %>
+		    <% end %>
+		<% end %>
+	    </div>  
+	</div>
+</div>
