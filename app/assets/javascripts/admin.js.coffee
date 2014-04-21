@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   $('#adminTabs').on('shown.bs.tab', (e) ->
-    target = $(e.target).attr("href") 
+    target = $(e.target).attr("href")
     $.get("/admin/" + target.replace(/#/, ''), ((data) ->
       $("#adminContent").html(data)
       $("#content").trigger("refreshProducts")
@@ -12,7 +12,7 @@ $ ->
   )
   
   
-  $('#adminTabs a:first').tab('show'); 
+  $('#adminTabs a:first').tab('show')
     
   $("#content").on("ajax:complete", ".remove", ->
     alert("success"))
@@ -26,7 +26,9 @@ $ ->
      
   $("#content").on("refreshProducts", () ->
     if ($(".updated").length == 1)
-      $(".prodContainer:first").scrollTop($(".updated:first").offset().top - $(".prodContainer:first").offset().top)
+      topOffsetFirst = $(".updated:first").offset().top
+      topOffsetContainer = $(".prodContainer:first").offset().top
+      $(".prodContainer:first").scrollTop(topOffset - topOffsetContainer)
   )
 
   

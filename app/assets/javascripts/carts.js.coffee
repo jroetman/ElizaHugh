@@ -5,10 +5,9 @@
 jQuery ->
   
   $("#new_shipping_address").hide()
-   
+  
   $(".shipping").click ->
-    if $(this).is(':checked') 
+    if $(this).is(':checked')
       $("#new_shipping_address").show()
     else
       $("#new_shipping_address").hide()
-   
