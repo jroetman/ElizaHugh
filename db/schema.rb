@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140418200317) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "billing_addresses", force: true do |t|
     t.integer  "userid"
     t.string   "first_name"
@@ -58,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140418200317) do
     t.string   "long_description"
   end
 
-  add_index "products", ["category_id"], name: "index_products_on_category_id"
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
   create_table "shipping_addresses", force: true do |t|
     t.integer  "userid"
