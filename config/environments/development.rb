@@ -30,5 +30,6 @@ ElizaHugh::Application.configure do
 
   #Paperclip.options[:command_path] = "/usr/local/bin/"
   
+  config.assets.raise_production_errors = true
 
 end
