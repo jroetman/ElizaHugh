@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -50,3 +50,4 @@ gem 'font-awesome-rails'
 gem 'active_shipping'
 gem 'angularjs-rails'
 gem 'stripe'
+gem 'rails_12factor', group: :production
