@@ -50,5 +50,3 @@ gem 'font-awesome-rails'
 gem 'active_shipping'
 gem 'angularjs-rails'
 gem 'stripe'
-gem 'rails_12factor', group: :production
-gem 'sprockets_better_errors'

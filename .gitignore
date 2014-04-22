@@ -1,5 +1,7 @@
 /tmp
-/public/assets/application-*
+/public/assets/manifest*
+/public/assets/*-*
+/public/assets/jscolor/*-*
 /public/system/
 /db/development.log
 /db/development.sqlite3
