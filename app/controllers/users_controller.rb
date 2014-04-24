@@ -50,6 +50,8 @@ class UsersController < ApplicationController
      if current_user.nil?
          @user = User.new
      end
+     
+      @user = User.new
     
   end
 

@@ -1,3 +1,4 @@
+
   <%= csrf_meta_tag %> 
   <script>
     $.ajaxSetup({
@@ -17,18 +18,18 @@
 			      <% end %>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-			        <% if current_user != nil %> 
+			        <% if current_user != nil && !is_guest %> 
 			           <% if is_admin %>
 			               <li><a href="/admin"> Admin Page </a></li>
 			               <li><a href="/authentication/logout"> Logout </a> </li>
 			           <% else %>
-			               <li><div class='loggedIn'><label>Logged in as: </label> <a href="/"'><%= current_user.username %></a></div></li>
-			               <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"> </span></a></li>
+			               <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"> </span>(<%= getCartItems.size %>)</a></li>
+			               <li><div class='loggedIn'><label> Welcome </label> <a href="/"'><%= current_user.username[/^(.*)@/,1] %></a></div></li>
 			               <li><a href="/authentication/logout"> Logout </a> </li>
 			           <% end %>
 			        <% else %>
+			           <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"> </span>(<%= getCartItems.size %>)</a></li>
 			           <li><a href="/users/new">Create Account</a></li>
-			           <li><p class="navbar-text"> | </p></li>
 			           <li><a href="/users/login">Login</a></li>
 			        <% end %>
 			   </ul>

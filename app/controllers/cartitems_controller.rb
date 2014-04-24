@@ -1,28 +1,31 @@
 class CartitemsController < ApplicationController
-  before_action :require_login
-  
   
   def index
-     @cartitems = current_user.cartitems
      render template: "/cartitems/show"
       
   end
 
   def add
       prodId = params[:id]
+      #I chose to serialize cartitems to json in the database. 
+      #Adding items as a string makes it consistent when deserializing.
+      session[:cartitems] << prodId.to_s
       
-      c = Cartitem.new()
-      c.productid = prodId
-      c.userid = current_user.id
-      c.save()
-      redirect_to  :back
-  
+      update_cart
+      
+      redirect_to :back
+      
   end
   
 
   def delete 
-      cart = Cartitem.find(params[:id])
-      cart.destroy
+      id = params[:id]
+      idxMap = Hash[session[:cartitems].map.with_index.to_a]
+      idx = idxMap[id]
+      
+      session[:cartitems].delete_at(idx)
+      
+      update_cart
       
       redirect_to "/cart"
   end
@@ -63,9 +66,12 @@ class CartitemsController < ApplicationController
   
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_cart
-
-       
+    def update_cart
+      if session[:user_id]
+	      cart = Cart.find_or_create_by_user_id(session[:user_id]);
+	      cart.cart_json = session[:cartitems].to_json
+	      cart.save
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

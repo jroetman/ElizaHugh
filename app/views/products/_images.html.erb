@@ -5,6 +5,11 @@
 	         <li> <%= link_to image_tag(product.image.url(:medium), :size => "200x180"), {:action => 'show', :controller => 'products',  :id => product.id} %> </li>
 		     <li><strong> <%= product.title %> </strong></li>
 		     <li><p class="prodDescription whitespace"><%= product.description %></p> </li>  
+		     <% if !itemInCart(product.id)  %>
+		        <%= link_to "Add to Cart", {:controller => "cartitems", :action => "add",  id: product.id} , method: :post, class: "btn btn-sm btn-info" %>
+		     <% else %>
+		        <a href="/cart"><span class="btn btn-default glyphicon glyphicon-shopping-cart"> </span></a> In Cart
+		     <% end %>
 	     </ul>
 	</div>
   <% end %>

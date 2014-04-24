@@ -19,6 +19,10 @@ class AuthenticationController < ApplicationController
 	    
 	    if user
 	      session[:user_id] = user.id
+	     
+	      session[:cartitems] = JSON::parse(Cart.find_by_user_id(user.id).cart_json) 
+	      session[:cartitems] ||= Set.new
+	     
 	      redirect_to root_path
 	      
 	    else
@@ -29,7 +33,7 @@ class AuthenticationController < ApplicationController
  end
  
  def logout
-    session[:user_id] = nil 
+    reset_session 
     redirect_to root_url
  end
  

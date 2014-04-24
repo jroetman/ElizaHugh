@@ -1,5 +1,11 @@
 class User < ActiveRecord::Base
-  has_many :cartitems, foreign_key: "userid"
+  def after_initialize
+    if !session[:cartitems]
+        session[:cartitems] = Array.new
+    end
+    
+  end
+  
   has_many :products,  through: :cartitems, foreign_key: "productid"
    
   before_save :encrypt_password
@@ -10,9 +16,6 @@ class User < ActiveRecord::Base
   validates :email, format: {message: "Email is invalid", with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   validates_uniqueness_of :email, message: "Email address already taken"
   
-  def cart_total
-      self.products.sum(:price);
-  end
   
   def self.authenticate_by_email(user, password)
     if BCrypt::Password.new(user.password) == password
