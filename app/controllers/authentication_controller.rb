@@ -19,9 +19,13 @@ class AuthenticationController < ApplicationController
 	    
 	    if user
 	      session[:user_id] = user.id
-	     
-	      session[:cartitems] = JSON::parse(Cart.find_by_user_id(user.id).cart_json) 
-	      session[:cartitems] ||= Set.new
+	      cart = Cart.find_by_user_id(user.id)
+	      
+	      if cart
+	        session[:cartitems] = JSON::parse(cart.cart_json)
+	      else 
+	        session[:cartitems] = Set.new
+	      end
 	     
 	      redirect_to root_path
 	      
