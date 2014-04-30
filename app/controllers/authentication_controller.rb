@@ -19,13 +19,16 @@ class AuthenticationController < ApplicationController
 	    
 	    if user
 	      session[:user_id] = user.id
-	      cart = Cart.find_by_user_id(user.id)
-	      
+	     
+	      #this is duplicated in reservation_cart_actions.rb
+	      items = Array.new
+       
+	      cart =  Cartitem.where(user_id: user_id).pluck(&:product_id)
 	      if cart
-	        session[:cartitems] = JSON::parse(cart.cart_json)
-	      else 
-	        session[:cartitems] = Set.new
-	      end
+	         items = cart
+	      end 
+	         
+	      session[:cartitems] = items.to_json
 	     
 	      redirect_to root_path
 	      

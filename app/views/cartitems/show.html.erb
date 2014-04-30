@@ -1,24 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<div class="col-sm-8">
+<div class="col-sm-7">
 	<div class="panel panel-default">
 	  <div class="panel-heading">
         <h3 class="panel-title">Your cart</h3>
       </div>
 	  <div class="panel-body cart">
-		   <table class="table">
-		    <tbody>
-	
-			<% getCartItems.each_with_index do |item, idx| %>
-			  <tr>
-			    <td><%= image_tag item.image.url(:small) %></td>
-			    <td><p class="whitespace"><%= item.description %></p></td>
-			    <td>$<%=  sprintf("%.2f", (item.price)) %></td>
-			    <td><%= link_to "Remove Item", {action: 'delete', id: item.id}, class: "btn btn-xs btn-default" %> </td>
-			  </tr>
+		   <% getCartItems.each_with_index do |item, idx| %>
+		     <div class="row col-sm-12 cartItem">
+		        <div class="col-sm-4">
+	               <%= image_tag item.image.url(:small) %>
+	            </div>
+	            <div class="col-sm-8">
+	               <ul class="">
+				    <li><h5><%= item.title %><h5></li>
+				    <li><p>$<%=  sprintf("%.2f", (item.price)) %></p></li>
+				    <li><p><%= link_to "Remove Item", product_cancel_reservation_path(product_id: item.id), class: "btn btn-xs btn-default" %></p></li>
+				   </ul> 
+			    </div>
+			 </div>
 			<% end %>
-			</tbody>
-		  </table>
 	  </div>
 	  <div class="panel-footer">
 	    

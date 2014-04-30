@@ -1,4 +1,3 @@
-
   <%= csrf_meta_tag %> 
   <script>
     $.ajaxSetup({
@@ -18,7 +17,7 @@
 			      <% end %>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-			        <% if current_user != nil && !is_guest %> 
+			        <% if current_user != nil && !is_guest %>         
 			           <% if is_admin %>
 			               <li><a href="/admin"> Admin Page </a></li>
 			               <li><a href="/authentication/logout"> Logout </a> </li>
@@ -35,5 +34,13 @@
 			   </ul>
 	    </div>
     </nav>
+    <div id="itemadded" class="message">
+      <div class='messageHead'><button class='closemessage btn btn-default btn-xs'> X </button></div>
+      <div class='messageBody'> </div>
+    </div>
+    <div id="<%= message_channel %>_messages" class="usermessage message">
+      <div class='messageHead'><button class='closemessage btn btn-default btn-xs'> X </button></div>
+      <div class='messageBody'> </div>
+    </div>
  </div>
 

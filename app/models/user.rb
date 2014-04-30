@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   def after_initialize
     if !session[:cartitems]
-        session[:cartitems] = Array.new
+        session[:cartitems] = Array.new   
     end
     
   end

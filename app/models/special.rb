@@ -1,8 +1,11 @@
 class Special < ActiveRecord::Base
   
-
    def getStyle
-     "style=background-color:#" + self.color + ";"
+     if self.color
+       "style='background-color:#" + self.color + ";'"
+     else
+       "style='background-color:#eee;'"
+     end
    end
   
   

@@ -16,12 +16,15 @@ ElizaHugh::Application.routes.draw do
   get "users/login"
   get  "cart"  => "cartitems#index"
   post "create_user" => "users/create"
-  post "products/:id/add_to_cart" => "cartitems#add"
+  get  "products/:id/add_to_cart" => "cartitems#add"
   get  "cartitems/delete/:id" => "cartitems#delete"
   get  "cart/checkout" => "cartitems#checkout"
   post "cart/charge" => "cartitems#charge"
   get  "cart/complete" => "cartitems#complete"
   
+  #reservations
+  get  "product/reserve" => "reservation_queues#reserve"
+  get  "product/cancel_reservation" => "reservation_queues#cancel"
   
   post "products/createRemote"
   #authentication
@@ -30,9 +33,7 @@ ElizaHugh::Application.routes.draw do
   get "signed_out" => "authentication#signed_out"
   get "change_password" => "authentication#change_password" 
   get "forgot_password" => "authentication#forgot_password"
-  get "password_sent" => "authentication#password_sent"
-  
-   
+  get "password_sent"   => "authentication#password_sent"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

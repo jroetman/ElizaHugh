@@ -32,4 +32,6 @@ ElizaHugh::Application.configure do
   
   config.assets.raise_production_errors = true
 
+  config.middleware.delete Rack::Lock
+
 end

@@ -2,6 +2,7 @@
 
 .container{max-width:980px;}
 .whitespace {white-space:pre;}
+.cartItem {border-bottom:1px solid #ccc;padding:2px;margin:1px;}
 .tnav .navbar .container .navbar-default { height: 28px; }
 .head {text-align:right;padding-top:0px;height:120px;background:url("/assets/springBack.jpg");background-size:100% 390px; background-position:0px 70%;}
 .head img {max-width:350px;margin:2px;height:115px;}
@@ -50,6 +51,7 @@ body {padding-top:0px;}
 .logo {margin-left:-30px;}
 #productList {height:500px;overflow:auto;}
 #myCarousel {margin-top:0px;margin-bottom:10px;}
+#specials {height: 400px; }
 .loginHead {color:#003377}
 .loginPage {background:url("/assets/chestRugs.jpg"); background-position:0% 0%;background-size:180% 180%;height:500px;}
 .loginBack {position:absolute;width:95%;border-radius:3px;z-index:0;border:1px solid white;margin:10px;background:white;opacity:0.5;height:265px;}
@@ -64,3 +66,10 @@ body {padding-top:0px;}
    max-height:400px;
    width:100%;
 }
+
+.image {width:100%;}
+.image img {width:100%;min-height:330px;}
+//Websocket Messages
+.message {color:white;background:#224;width: 350px;height:200px;padding:5px;border:1px solid #DDD;margin:2px;border-radius:5px;float:left;position:absolute;z-index:100;margin-left:4%;}
+.message .messageHead {margin:2px;text-align:right;height:15px;}
+.message .messageBody a {color: #5AF;}
