@@ -51,6 +51,4 @@ gem 'active_shipping'
 gem 'angularjs-rails'
 gem 'stripe'
 gem 'thin'
-gem 'pry-rails', :group => :development
-gem 'pry-nav'
 gem 'faye-rails'

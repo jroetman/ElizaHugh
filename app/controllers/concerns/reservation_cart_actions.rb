@@ -1,6 +1,6 @@
 module ReservationCartActions 
     extend ActiveSupport::Concern
-    require 'assets/Message'
+    require_dependency 'assets/message'
  
    
     def added_to_cart_message(product_id, user_id)

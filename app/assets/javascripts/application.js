@@ -33,7 +33,7 @@ $(function(){
 	  $(this).fadeOut(2500);
    });
   
-  faye = new Faye.Client('http://localhost:9292/faye');
+  faye = new Faye.Client('https://www.elizahugh.com:9292/faye');
   faye.subscribe('/item/added_to_cart', function(data) {
 	 $("#itemadded .messageBody").html(data)
 	 $("#itemadded").fadeIn(500);

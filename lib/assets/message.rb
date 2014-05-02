@@ -1,4 +1,5 @@
 class Message
+    require 'net/https'
     require 'net/http'
 
     ItemReserved = {:channel => "/item/added_to_cart", 
@@ -14,15 +15,18 @@ class Message
     }
                                   
     def self.send_message(message)
-        uri = URI.parse("http://localhost:9292/faye")  
+        uri  = URI.parse("https://www.elizahugh.com:9292/faye")  
+        http = Net::HTTP.new(uri, uri.port)
+        http.use_ssl = true
         Net::HTTP.post_form(uri, :message => message.to_json)
         
     end
     
     def self.send_user_message(message)
-        uri = URI.parse("http://localhost:9292/faye") 
+        uri  = URI.parse("https://www.elizahugh.com:9292/faye")  
+        http = Net::HTTP.new(uri, uri.port)
+        http.use_ssl = true
         Net::HTTP.post_form(uri, :message => message.to_json)
-        
     end
 
 end
