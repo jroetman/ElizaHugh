@@ -13,6 +13,7 @@ ElizaHugh::Application.routes.draw do
   get "products/show"
   get "specials/index"
   get "welcome/index"
+  get "welcome/terms"
   get "users/login"
   get  "cart"  => "cartitems#index"
   post "create_user" => "users/create"

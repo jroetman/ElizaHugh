@@ -6,4 +6,7 @@ class WelcomeController < ApplicationController
     @specials = Special.all
 
   end
+  
+  def terms
+  end
 end

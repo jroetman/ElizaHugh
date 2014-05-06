@@ -1,3 +1,4 @@
+<br>
 <div class="col-sm-12">
     <div class="col-sm-7">
         <div id="myCarousel" class="carousel slide">
@@ -11,7 +12,7 @@
             <!-- Carousel items -->
             <div class="carousel-inner">
                 <% @products.each_with_index do |prod, idx| %>
-               	<div class='<%= idx == 0 ? "active item" : "item" %>' >
+               	<div class='<%= idx == 0 ? "active item" : "item" %> carousel-img' >
                	    <%= link_to (image_tag prod.image.url(:large), :class => "img-rounded"), product_path(prod) %>
                	</div>
            	    <% end %>

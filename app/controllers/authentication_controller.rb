@@ -23,7 +23,7 @@ class AuthenticationController < ApplicationController
 	      #this is duplicated in reservation_cart_actions.rb
 	      items = Array.new
        
-	      cart =  Cartitem.where(user_id: user_id).pluck(&:product_id)
+	      cart =  Cartitem.where(user_id: user.id).pluck(&:product_id)
 	      if cart
 	         items = cart
 	      end 

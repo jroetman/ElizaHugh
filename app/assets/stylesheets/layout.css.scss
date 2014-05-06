@@ -1,16 +1,16 @@
 #content {min-height:500px;}
 
-.container{max-width:980px;}
+.foot {border-top:1px solid;height:200px;padding:5px;}
+.foot li a {color:#0066CC}
+.address {color:#0066CC}
 .whitespace {white-space:pre;}
 .cartItem {border-bottom:1px solid #ccc;padding:2px;margin:1px;}
 .tnav .navbar .container .navbar-default { height: 28px; }
 .head {text-align:right;padding-top:0px;height:120px;background:url("/assets/springBack.jpg");background-size:100% 390px; background-position:0px 70%;}
 .head img {max-width:350px;margin:2px;height:115px;}
-.foot {clear:both;margin-top:5px;background:url("/assets/springBack.jpg");background-size:150%; background-position:0px 100%;}
 .loggedIn {color:#557;margin-top:15px;}
 .navbar {margin-bottom:5px;}
 .panel-body {padding-bottom:2px;}
-.panel-footer {height:50px;}
 
 .navbar{
     background-color:white;
@@ -46,7 +46,7 @@ body {padding-top:0px;}
   padding: 20px;
 }
 
-.fl {height:75px;background:white;opacity:0.8;}
+.fl {height:75px;background:white;position:relative;}
 .addy p{margin-top:10px;}
 .logo {margin-left:-30px;}
 #productList {height:500px;overflow:auto;}
@@ -63,7 +63,8 @@ body {padding-top:0px;}
 .updated {background:#EEEAE3;}
 
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {
-   max-height:400px;
+   max-height:380px;
+
    width:100%;
 }
 
