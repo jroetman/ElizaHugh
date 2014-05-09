@@ -23,6 +23,7 @@
         </div>
     </div>
     
+    <% cache do %>
     <div id="specials" class="col-sm-5" ng-controller="SpecialsCtrl">
         <% @specials.each do |product| %>
         <div class="specials row">
@@ -35,5 +36,6 @@
         </div>
 	    <% end %>	
     </div>
+    <% end %>
     
 </div>

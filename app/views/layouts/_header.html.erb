@@ -10,24 +10,26 @@
   <a href="/"><div class="head"> <%= image_tag("ehLogo.png", :size => "270x90") %> </div></a>
   <nav class="navbar navbar-default" role="navigation">
       <div class="container">
+      	     <% cache(cache_key_for_categories) do %>
 		     <ul class="nav navbar-nav">
 			      <li class=""><a href="/"> <span class="glyphicon glyphicon-home"></a> </span> </li>
-			      <% categories.each do |c| %>
+			      <% Category.all.each do |c| %>
 			        <li class=""><a href="/products?&cat=<%= c.id %>"><%= c.name %></a></li>
 			      <% end %>
-			</ul>
+			 </ul>
+			<% end %>
 			<ul class="nav navbar-nav navbar-right">
 			        <% if current_user != nil && !is_guest %>         
 			           <% if is_admin %>
 			               <li><a href="/admin"> Admin Page </a></li>
 			               <li><a href="/authentication/logout"> Logout </a> </li>
 			           <% else %>
-			               <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"> </span>(<%= getCartItems.size %>)</a></li>
+			               <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"> </span>(<%= itemCount %>)</a></li>
 			               <li><div class='loggedIn'><label> Welcome </label> <a href="/"'><%= current_user.username[/^(.*)@/,1] %></a></div></li>
 			               <li><a href="/authentication/logout"> Logout </a> </li>
 			           <% end %>
 			        <% else %>
-			           <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"> </span>(<%= getCartItems.size %>)</a></li>
+			           <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"> </span>(<%= itemCount %>)</a></li>
 			           <li><a href="/users/new">Create Account</a></li>
 			           <li><a href="/users/login">Login</a></li>
 			        <% end %>

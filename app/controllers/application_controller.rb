@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session 
   before_filter :set_no_cache
-
   
   helper_method :current_user, :is_admin, :is_guest, :categories, :item_in_cart, :message_channel
   def current_user
@@ -32,11 +31,6 @@ class ApplicationController < ActionController::Base
     
   end
   
-  def categories
-    @categories = Category.all
-  end
-
-   
   private
   
   def require_login

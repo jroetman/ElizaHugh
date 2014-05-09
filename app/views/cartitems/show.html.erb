@@ -1,3 +1,4 @@
+<script src="https://checkout.stripe.com/checkout.js"></script>
 <p id="notice"><%= notice %></p>
 
 <div class="col-sm-7">
@@ -6,7 +7,7 @@
         <h3 class="panel-title">Your cart</h3>
       </div>
 	  <div class="panel-body cart">
-		   <% getCartItems.each_with_index do |item, idx| %>
+		   <% @cartItems["products"].each_with_index do |item, idx| %>
 		     <div class="row col-sm-12 cartItem">
 		        <div class="col-sm-4">
 	               <%= image_tag item.image.url(:small) %>
@@ -33,29 +34,20 @@
       </div>
 	  <div class="panel-body cartSummary">
 	    <ul>
-			<li>CART TOTAL     <span class="pull-right"><%= sprintf("%.2f",getCartTotal) %></span></li>
-			<li>SHIPPING       <span class="pull-right"><%= sprintf("%.2f", getShipping) %></span> </li>
-			<li>ESTIMATED TAX  <span class="pull-right"><%= sprintf("%.2f", (getTax * getCartTotal)) %></span></li>
-			<li class='total'>TOTAL <span class="pull-right"><%= sprintf("%.2f", (getCartTotal + (getTax * getCartTotal) + getShipping)) %> </span></li>
+			<li>CART TOTAL  <span class="pull-right"><%= sprintf("%.2f", @cartItems["cartTotal"]) %></span></li>
+			<li>SHIPPING    <span class="pull-right"><%= sprintf("%.2f", @cartItems["shipping"]) %></span> </li>
+			<li class='total'>TOTAL <span class='state'> state: <%= select_tag :state, options_for_select(us_states), id: "statedropdown" %> </span> <span class="pull-right" id="grandTotal"> </span>
+			  <input type='hidden' id='totalMaine' value='<%= sprintf("%.2f", @cartItems["grandTotalMaine"]) %>'>
+			  <input type='hidden' id='totalOut'   value='<%= sprintf("%.2f", @cartItems["grandTotalOut"])   %>'>
+			</li>		
 	    </ul>
 	    
 	  </div>
 	  <div class="panel-footer">
 	    <div class='checkoutFoot'>
-                        Comming Soon! (You can try, but it's only hooked up for testing)
-			<%= form_tag({controller: "cartitems", action: "charge"}) do %>
-			  <script
-			    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-			    data-key="pk_test_VfHP98Jj6JcxsM3JGHjvYrne"
-			    data-amount="<%= getCartTotal * 100 %>"
-			    data-name="Eliza Hugh"
-			    data-billing-address=""
-			    data-shipping-address=""
-			    data-description="Purchase of <%= getCartItems.size %> items."
-			    data-image="/ehLogo.png"
-			    >
-			  </script>
-			<% end %>	
+            Comming Soon! (You can try, but it's only hooked up for testing
+            <button id="payWithCard" class="btn btn-info btn-md">Pay With CarD </button> 
+			
 			<% flash.each do |name, msg| -%>
      		 <%= content_tag :div, msg, class: name %>
    		   <% end -%>       

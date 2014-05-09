@@ -2,18 +2,9 @@
 
 module ProductsHelper
   include ActiveMerchant::Shipping
+
   
-  def getTax
-      p = PaymentInfo.first
-      p.tax
-  end
-  
-  def getShipping
-      p = PaymentInfo.first
-      p.shipping
-  end
-  
- def upsShippingCosts(products)
+  def upsShippingCosts(products)
       packages = [
           Package.new(  100,                        # 100 grams
                     [93,10],                    # 93 cm long, 10 cm diameter

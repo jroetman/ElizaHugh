@@ -1,6 +1,18 @@
 class CartitemsController < ApplicationController
   
   def index
+     
+     user_id = session[:user_id] ? session[:user_id] : session.id
+     
+     @cartItems = Hash.new
+     items = ReservationQueue.where(user_id: user_id).collect(&:product_id)
+     @cartItems["products"]   = Product.where(:id => items)
+     @cartItems["cartTotal"] = @cartItems["products"].sum(:price).to_f
+     @cartItems["shipping"]  = PaymentInfo.shippingCost(@cartItems["cartTotal"])
+     @cartItems["estimatedTax"] = PaymentInfo.first.tax * @cartItems["cartTotal"]
+     @cartItems["grandTotalMaine"] = @cartItems["cartTotal"] + @cartItems["shipping"] + @cartItems["estimatedTax"]
+     @cartItems["grandTotalOut"]   = @cartItems["cartTotal"] + @cartItems["shipping"]
+     
      render template: "/cartitems/show" 
   end
 
@@ -39,8 +51,6 @@ class CartitemsController < ApplicationController
   
   private
     # Use callbacks to share common setup or constraints between actions.
-   
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
       params.require(:cart).permit(:userid, :prodId)
