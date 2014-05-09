@@ -2,7 +2,5 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.specials .alert:hover {cursor:pointer;border:1px solid #FA0;opacity:0.8}
-.specials {
-	margin-top:20px;
-}
+.specials .alert:hover {opacity:0.8}
+#specials {margin-top:-10px;float:left;}

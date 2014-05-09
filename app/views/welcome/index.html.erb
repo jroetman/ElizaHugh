@@ -1,6 +1,13 @@
 <br>
 <div class="col-sm-12">
-    <div class="col-sm-7">
+    <div class="row alert alert-info">
+      <h4>
+      <span class="glyphicon glyphicon-wrench"></span> This site is under lots of construction. <br>
+      <span class="glyphicon glyphicon-phone-alt"></span> If you see something you like, please call: 207.803.8052<br>
+      <span class="glyphicon glyphicon-heart"></span> Thank You!
+      </h4>
+    </div>
+    <div class="col-sm-6">
         <div id="myCarousel" class="carousel slide">
             <ol class="carousel-indicators">
 	    	    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -24,15 +31,13 @@
     </div>
     
     <% cache do %>
-    <div id="specials" class="col-sm-5" ng-controller="SpecialsCtrl">
+    <div id="specials" class="col-sm-5">
         <% @specials.each do |product| %>
-        <div class="specials row">
-            <div class="col-sm-12">
+        <div class="col-sm-12">
 	            <div class="alert" <%= product.getStyle %>>
 	              <h4><%= product.title %></h4>
 	              <p> <%= product.description %></p>
 	            </div>
-            </div>
         </div>
 	    <% end %>	
     </div>
