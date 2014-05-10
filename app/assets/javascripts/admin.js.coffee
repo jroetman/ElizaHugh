@@ -2,16 +2,20 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
+            
   $('#adminTabs').on('shown.bs.tab', (e) ->
     target = $(e.target).attr("href")
+    
     $.get("/admin/" + target.replace(/#/, ''), ((data) ->
       $("#adminContent").html(data)
       $("#content").trigger("refreshProducts")
-      ), 'html')
-     
+      ), 'html').done ->
+        $(".colorpick").each ->
+          alert($(this).attr("id"));
+          new jscolor.color(document.getElementById($(this).attr("id")), {}); 
+        
   )
-  
-  
+	
   $('#adminTabs a:first').tab('show')
     
   $("#content").on("ajax:complete", ".remove", ->

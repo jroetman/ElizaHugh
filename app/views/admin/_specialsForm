@@ -1,15 +1,3 @@
-
- <script type="text/javascript">
- //  var myPicker = new jscolor.color(document.getElementById('myField1'), {})
-   $(function() {
-   $(".colorpick").each(function(idx){
-       jscolor.color($(this).attr("id"), {})
-   });
-   });
-  
-  // myPicker.fromString('99FF33')  // now you can access API via 'myPicker' variable
- </script>
-
  <%= form_for special , :remote => true,  :html => {:id => "specialsSave"} do |f| %>
       <div class='form-inline'>
 	  <div class="form-group">
