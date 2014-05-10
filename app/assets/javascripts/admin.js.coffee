@@ -11,7 +11,6 @@ $ ->
       $("#content").trigger("refreshProducts")
       ), 'html').done ->
         $(".colorpick").each ->
-          alert($(this).attr("id"));
           new jscolor.color(document.getElementById($(this).attr("id")), {}); 
         
   )
