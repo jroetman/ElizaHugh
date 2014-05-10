@@ -5,7 +5,7 @@ class AdminController < ApplicationController
   end
   
   def specials
-    @specials = Special.all
+    @specials = Special.all.order(:id)
     render :partial => "specials", :layout => false, :locals =>{:specials =>@specials}
     
   end

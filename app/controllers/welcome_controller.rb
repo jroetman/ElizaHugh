@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
   
   def index
     @products = Product.limit(5).order("RANDOM()")
-    @specials = Special.all
+    @specials = Special.all.order(:id)
 
   end
   
