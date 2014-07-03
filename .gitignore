@@ -9,4 +9,5 @@
 /db/schema.rb
 /db/seeds.rb
 /log
+faye.ru
 .bundle/install.log

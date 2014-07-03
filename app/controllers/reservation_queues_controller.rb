@@ -6,7 +6,12 @@ class ReservationQueuesController < ApplicationController
       product_id = params[:product_id]
       
         
-      r = ReservationQueue.new(:product_id => product_id, :user_id => user_id, :message_channel => message_channel)
+      r = ReservationQueue.find_or_create_by(:product_id => product_id, :user_id => user_id, :message_channel => message_channel)
+      
+      if !r.new_record?
+          redirect_to :root
+      end
+          
       r.save
       
       #Let people know this item is being considered

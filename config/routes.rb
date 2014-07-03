@@ -20,7 +20,6 @@ ElizaHugh::Application.routes.draw do
   get  "products/:id/add_to_cart" => "cartitems#add"
   get  "cartitems/delete/:id" => "cartitems#delete"
   get  "cart/checkout" => "cartitems#checkout"
-  post "cart/charge" => "cartitems#charge"
   get  "cart/complete" => "cartitems#complete"
   
   #reservations

@@ -22,31 +22,20 @@ class CartitemsController < ApplicationController
   end
   
   def charge
-      Stripe.api_key = "sk_test_lK7yQFkgDa3OUgv0YLMxaSPW"
-	
-      # Get the credit card details submitted by the form
-      token = params[:stripeToken]
-	
-      # Create the charge on Stripe's servers - this will charge the user's card
-      begin
-	    charge = Stripe::Charge.create(
-	    :amount => (current_user.cart_total * 100).to_i, # amount in cents, again
-	    :currency => "usd",
-	    :card => token,
-	    :description => "Eliza Hugh purchase."
-	   )
-	   
-	    flash[:notice] = "Your purchase is complete. Thank You." 
-        current_user.cartitems.destroy
-        Cartitem.destroy_all(:userid => current_user.id)
-        
-      rescue => e
-        flash[:notice] = "There was an error: " + e.to_s;
-        
-  	  end
-  	  
-  	  redirect_to "/cart/complete"
+      #Stripe.api_key = "sk_test_lK7yQFkgDa3OUgv0YLMxaSPW"
+	 
 
+  end
+  
+  def complete
+      user_id = session[:user_id] ? session[:user_id] : session.id
+
+	  #update queue
+      ReservationQueue.delete_all(:user_id => user_id)
+      Cartitem.destroy_all(:user_id => user_id)
+        	   
+	  flash[:notice] = "Your purchase is complete. Thank You." 
+	    
   end
   
   private

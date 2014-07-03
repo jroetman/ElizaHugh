@@ -20,13 +20,18 @@ class AdminController < ApplicationController
     
   def paymentSettings
     @settings = PaymentInfo.select("payment_info.*").from("payment_info")
+    if (!@settings.any?) 
+      @settings = [PaymentInfo.new]
+    end
+    
     render :partial => "paymentSettings", :layout => false
     
   end
   
-  def updatePaymentInfo
-    pi = PaymentInfo.find(params[:payment_info][:id])
-    pi.update(params[:payment_info].permit(:id, :tax))
+  def updatePaymentInfo	
+    pi = PaymentInfo.new(params[:payment_info].permit(:vendor, :id, :tax, :shipping))
+    pi.save()
+   
     @settings = PaymentInfo.select("payment_info.*").from("payment_info")
      
     respond_to do |format|

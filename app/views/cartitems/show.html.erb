@@ -1,4 +1,4 @@
-<script src="https://checkout.stripe.com/checkout.js"></script>
+ <script src="https://checkout.stripe.com/checkout.js"></script>
 <p id="notice"><%= notice %></p>
 
 <div class="col-sm-7">
@@ -45,8 +45,9 @@
 	  </div>
 	  <div class="panel-footer">
 	    <div class='checkoutFoot'>
-            Comming Soon! (You can try, but it's only hooked up for testing
-            <button id="payWithCard" class="btn btn-info btn-md">Pay With CarD </button> 
+	        <p class="leftP">Currently, online orders ship only within the US. Please call for anywhere else. </p>
+            <h5 id="checkoutInfo" class="text-danger">Comming Soon </h5>
+            <button id="payWithCard" <%= @cartItems["products"].size <= 0 ? "disabled=disabled" : "" %> class="btn btn-info btn-md">Pay With Card </button> 
 			
 			<% flash.each do |name, msg| -%>
      		 <%= content_tag :div, msg, class: name %>
